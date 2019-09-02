@@ -1,0 +1,95 @@
+&GLOBAL
+   PROJECT_NAME test
+   RUN_TYPE ENERGY
+&END GLOBAL
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME EMSL_BASIS_SETS
+    POTENTIAL_FILE_NAME POTENTIAL
+    AUTO_BASIS RI_XAS MEDIUM
+
+    &MGRID
+      CUTOFF 600
+      REL_CUTOFF 60
+      NGRIDS 5
+    &END MGRID
+    &QS
+      METHOD GAPW
+      LMAXN0 8
+      LMAXN1 12
+    &END QS
+    &POISSON
+      PERIODIC NONE
+      PSOLVER MT 
+    &END
+    &SCF
+      EPS_SCF 1.0E-8
+      SCF_GUESS ATOMIC
+      MAX_SCF 50
+    &END SCF
+    &XC
+         &XC_FUNCTIONAL 
+            &LIBXC 
+               FUNCTIONAL HYB_GGA_XC_B3LYP5 
+            &END LIBXC 
+         &END XC_FUNCTIONAL
+         &HF 
+            FRACTION 0.2 
+         &END HF
+    &END XC
+
+    &XAS_TDP
+      &DONOR_STATES
+         DEFINE_EXCITED BY_KIND
+         KIND_LIST C
+         STATE_TYPES 1s 
+         N_SEARCH 2
+         LOCALIZE T
+      &END DONOR_STATES
+
+      TAMM_DANCOFF T
+      EXCITATIONS RCS_SINGLET
+      GRID C 250 250 
+      DIPOLE_FORM LENGTH
+
+      &KERNEL
+         RI_REGION 5.0
+         &XC_FUNCTIONAL 
+            &LIBXC 
+               FUNCTIONAL HYB_GGA_XC_B3LYP5 
+            &END LIBXC 
+         &END XC_FUNCTIONAL
+         &EXACT_EXCHANGE 
+            SCALE 0.2 
+         &END EXACT_EXCHANGE
+      &END KERNEL
+
+    &END XAS_TDP
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 10.0 10.0 10.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      C 5.000000    5.000000    5.603250
+      C 5.000000    5.000000    4.396750
+      H 5.000000    5.000000    6.666650
+      H 5.000000    5.000000    3.333350
+    &END COORD
+    &KIND H
+       BASIS_SET 6-31G*
+       POTENTIAL ALL 
+       LEBEDEV_GRID 80 
+       RADIAL_GRID 80 
+    &END KIND 
+    &KIND C
+       BASIS_SET 6-31G*
+       POTENTIAL ALL 
+       LEBEDEV_GRID 80 
+       RADIAL_GRID 80 
+    &END KIND 
+
+  &END SUBSYS
+&END FORCE_EVAL
