@@ -2,6 +2,10 @@
 
 This git repository contains slides and scripts for the CONEXS summer school
 
+### To read the XAS\_TDP DOC
+
+Simply go to the xas\_tdp\_docs folder and open XAS\_TDP.html with your browser
+
 ### In case the program is not available
 
 Note that the executable is compiled in order to work with as many linux systems as possible. Hence it not necessarily the most optimize one, but it should do the trick

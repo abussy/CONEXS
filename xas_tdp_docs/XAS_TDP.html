@@ -1,0 +1,492 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / XAS_TDP</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="XAS simulations using TDDFPT. Excitation from specified core orbitals are considered one at a time. In case of high symmetry structures, donor core orbitals should be localized.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/XAS_TDP.html">Section XAS_TDP</a></h2>
+      <ul class="none">
+         <li><em>XAS simulations using TDDFPT. Excitation from specified core orbitals are considered one at a time. In case of high symmetry structures, donor core orbitals should be localized.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../DFT.html">DFT</a> /
+               <a href="XAS_TDP.html">XAS_TDP</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="XAS_TDP/DIAGONALIZATION.html">DIAGONALIZATION</a></li>
+               <li><a href="XAS_TDP/DONOR_STATES.html">DONOR_STATES</a></li>
+               <li><a href="XAS_TDP/KERNEL.html">KERNEL</a></li>
+               <li><a href="XAS_TDP/PRINT.html">PRINT</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#SECTION_PARAMETERS" id="list_SECTION_PARAMETERS">SECTION_PARAMETERS</a></li>
+            </ul>
+            <ul class="disc">
+               <li><a href="#CHECK_ONLY" id="list_CHECK_ONLY">CHECK_ONLY</a></li>
+               <li><a href="#DIPOLE_FORM" id="list_DIPOLE_FORM">DIPOLE_FORM</a></li>
+               <li><a href="#EXCITATIONS" id="list_EXCITATIONS">EXCITATIONS</a></li>
+               <li><a href="#GRID" id="list_GRID">GRID</a></li>
+               <li><a href="#QUADRUPOLE" id="list_QUADRUPOLE">QUADRUPOLE</a></li>
+               <li><a href="#SPIN_ORBIT_COUPLING" id="list_SPIN_ORBIT_COUPLING">SPIN_ORBIT_COUPLING</a></li>
+               <li><a href="#TAMM_DANCOFF" id="list_TAMM_DANCOFF">TAMM_DANCOFF</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SECTION_PARAMETERS"></a><a href="#list_SECTION_PARAMETERS" id="SECTION_PARAMETERS">SECTION_PARAMETERS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">&amp;XAS_TDP</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>controls the activation of XAS simulations with linear response TDDFT.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CHECK_ONLY"></a><a href="#list_CHECK_ONLY" id="CHECK_ONLY">CHECK_ONLY</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CHECK_ONLY</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>This keyword defines whether the full calculation should be done or not. If set to .TRUE., only the determination of donor MOs is conducted. In the case of iterative OT diagonalization, the LUMOs eigenvalues are also screened for gaps and values for N_EXCITED are suggested. This run option allows for cheap verification of the input parameters</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_DIPOLE_FORM"></a><a href="#list_DIPOLE_FORM" id="DIPOLE_FORM">DIPOLE_FORM</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">DIPOLE_FORM</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Type of integral to get the oscillator strengths in the dipole approximation</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">VELOCITY</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">LENGTH</code></dt>
+                              <dd><em>Length form 〈 0 | e r | n 〉</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">VELOCITY</code></dt>
+                              <dd><em>Velocity form 〈 0 | d/dr | n 〉</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     DIP_FORM</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EXCITATIONS"></a><a href="#list_EXCITATIONS" id="EXCITATIONS">EXCITATIONS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EXCITATIONS</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the type of excitation to consider. In case of a resctricted closed-shell ground state calculation, RCS_SINGLET or/and RCS_TRIPLET can be chosen. In case of a open-shell ground state calculation (either UKS or ROKS), standard spin conserving excitation (OS_SPIN_CONS) or/and spin-flip excitation (OS_SPIN_FLIP) can be chosen.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword can be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">RCS_SINGLET</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">OS_SPIN_CONS</code></dt>
+                              <dd><em>Spin-conserving excitations on top of open-shell ground state</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">OS_SPIN_FLIP</code></dt>
+                              <dd><em>Spin-flip excitation on top of open-shell ground state</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">RCS_SINGLET</code></dt>
+                              <dd><em>Singlet on top of restricted closed-shell ground state</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">RCS_TRIPLET</code></dt>
+                              <dd><em>Triplet on top of restricted closed-shell ground state</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     EXCITATION</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_GRID"></a><a href="#list_GRID" id="GRID">GRID</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">GRID</code><code>&nbsp;{Word}</code><code>&nbsp;{Word}</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specification of the atomic grids for a given atomic kind.This keyword can/should be repeated for each excited kind. The default grid dimensions are those set for the GAPW ground state calculation. These grids are used for the xc-kernel calculations and/or for spin-orbit coupling.Use: GRID excited_kind na nr, na: LEBEDEV grid, nr: RADIAL grid</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword can be repeated
+                     and it expects
+                     
+                     precisely 3&nbsp;words.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     ATOMIC_GRID</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_QUADRUPOLE"></a><a href="#list_QUADRUPOLE" id="QUADRUPOLE">QUADRUPOLE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">QUADRUPOLE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Compute the electric quadrupole contribution to the oscillator strenghts (in the length representation with the origin set on the relevant excited atom)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     DO_QUADRUPOLE,
+                     DO_QUAD,
+                     QUAD</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SPIN_ORBIT_COUPLING"></a><a href="#list_SPIN_ORBIT_COUPLING" id="SPIN_ORBIT_COUPLING">SPIN_ORBIT_COUPLING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SPIN_ORBIT_COUPLING</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Whether spin-orbit coupling should be added. Note: only applies for spin-restricted calculations with singlet and triplet excitations OR spin-unrestricted calculations with both spin-conserving and spin-flip.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     SOC</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TAMM_DANCOFF"></a><a href="#list_TAMM_DANCOFF" id="TAMM_DANCOFF">TAMM_DANCOFF</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TAMM_DANCOFF</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Whether the Tamm-Dancoff approximation should be used.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     TDA</td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>
