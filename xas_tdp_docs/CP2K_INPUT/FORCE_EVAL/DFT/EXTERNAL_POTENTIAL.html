@@ -1,0 +1,413 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / EXTERNAL_POTENTIAL</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Section controlling the presence of an electrostatic external potential dependent on the atomic positions (X,Y,Z). As the external potential is currently applied via a grid, it only works with DFT based methods (GPW/GAPW) that already use a grid based approach to solve the Poisson equation.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/EXTERNAL_POTENTIAL.html">Section EXTERNAL_POTENTIAL</a></h2>
+      <ul class="none">
+         <li><em>Section controlling the presence of an electrostatic external potential dependent on the atomic positions (X,Y,Z). As the external potential is currently applied via a grid, it only works with DFT based methods (GPW/GAPW) that already use a grid based approach to solve the Poisson equation.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../DFT.html">DFT</a> /
+               <a href="EXTERNAL_POTENTIAL.html">EXTERNAL_POTENTIAL</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li>
+                  none
+                  </li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#DX" id="list_DX">DX</a></li>
+               <li><a href="#ERROR_LIMIT" id="list_ERROR_LIMIT">ERROR_LIMIT</a></li>
+               <li><a href="#FUNCTION" id="list_FUNCTION">FUNCTION</a></li>
+               <li><a href="#PARAMETERS" id="list_PARAMETERS">PARAMETERS</a></li>
+               <li><a href="#READ_FROM_CUBE" id="list_READ_FROM_CUBE">READ_FROM_CUBE</a></li>
+               <li><a href="#SCALING_FACTOR" id="list_SCALING_FACTOR">SCALING_FACTOR</a></li>
+               <li><a href="#STATIC" id="list_STATIC">STATIC</a></li>
+               <li><a href="#UNITS" id="list_UNITS">UNITS</a></li>
+               <li><a href="#VALUES" id="list_VALUES">VALUES</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_DX"></a><a href="#list_DX" id="DX">DX</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">DX</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Parameter used for computing the derivative with the Ridders' method.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-001</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [bohr]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ERROR_LIMIT"></a><a href="#list_ERROR_LIMIT" id="ERROR_LIMIT">ERROR_LIMIT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ERROR_LIMIT</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Checks that the error in computing the derivative is not larger than the value set; in case error is larger a warning message is printed.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-012</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FUNCTION"></a><a href="#list_FUNCTION" id="FUNCTION">FUNCTION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FUNCTION</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the functional form in mathematical notation. Variables must be the atomic coordinates (X,Y,Z) of the grid.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PARAMETERS"></a><a href="#list_PARAMETERS" id="PARAMETERS">PARAMETERS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PARAMETERS</code><code>&nbsp;{Word}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Defines the parameters of the functional form</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword can be repeated
+                     and it expects
+                     
+                     a list of words.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_READ_FROM_CUBE"></a><a href="#list_READ_FROM_CUBE" id="READ_FROM_CUBE">READ_FROM_CUBE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">READ_FROM_CUBE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Switch for reading the external potential from file pot.cube. The values of the potential must be on the grid points of the realspace grid.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SCALING_FACTOR"></a><a href="#list_SCALING_FACTOR" id="SCALING_FACTOR">SCALING_FACTOR</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SCALING_FACTOR</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>A factor for scaling the the external potential that is read from file.The value of the potential at each grid point is multiplied by this factor.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_STATIC"></a><a href="#list_STATIC" id="STATIC">STATIC</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">STATIC</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the external potential as STATIC or time dependent. At the moment only static potentials are implemented.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_UNITS"></a><a href="#list_UNITS" id="UNITS">UNITS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">UNITS</code><code>&nbsp;{Word}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Optionally, allows to define valid CP2K unit strings for each parameter value. It is assumed that the corresponding parameter value is specified in this unit.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword can be repeated
+                     and it expects
+                     
+                     a list of words.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_VALUES"></a><a href="#list_VALUES" id="VALUES">VALUES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">VALUES</code><code>&nbsp;{Real}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Defines the values of parameter of the functional form</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword can be repeated
+                     and it expects
+                     
+                     a list of reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [internal_cp2k]
+                        </code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

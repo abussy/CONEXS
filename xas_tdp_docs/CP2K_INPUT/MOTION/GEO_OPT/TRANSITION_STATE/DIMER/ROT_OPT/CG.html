@@ -1,0 +1,216 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / MOTION / GEO_OPT / TRANSITION_STATE / DIMER / ROT_OPT / CG</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Provides parameters to tune the conjugate gradient optimization">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../../../index.html#CP2K_INPUT/MOTION/GEO_OPT/TRANSITION_STATE/DIMER/ROT_OPT/CG.html">Section CG</a></h2>
+      <ul class="none">
+         <li><em>Provides parameters to tune the conjugate gradient optimization</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../../../MOTION.html">MOTION</a> /
+               <a href="../../../../GEO_OPT.html">GEO_OPT</a> /
+               <a href="../../../TRANSITION_STATE.html">TRANSITION_STATE</a> /
+               <a href="../../DIMER.html">DIMER</a> /
+               <a href="../ROT_OPT.html">ROT_OPT</a> /
+               <a href="CG.html">CG</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="CG/LINE_SEARCH.html">LINE_SEARCH</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#FLETCHER_REEVES" id="list_FLETCHER_REEVES">FLETCHER_REEVES</a></li>
+               <li><a href="#MAX_STEEP_STEPS" id="list_MAX_STEEP_STEPS">MAX_STEEP_STEPS</a></li>
+               <li><a href="#RESTART_LIMIT" id="list_RESTART_LIMIT">RESTART_LIMIT</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FLETCHER_REEVES"></a><a href="#list_FLETCHER_REEVES" id="FLETCHER_REEVES">FLETCHER_REEVES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FLETCHER_REEVES</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Uses FLETCHER-REEVES instead of POLAK-RIBIERE when using Conjugate Gradients</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_STEEP_STEPS"></a><a href="#list_MAX_STEEP_STEPS" id="MAX_STEEP_STEPS">MAX_STEEP_STEPS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_STEEP_STEPS</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum number of steepest descent steps before starting the conjugate gradients optimization.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RESTART_LIMIT"></a><a href="#list_RESTART_LIMIT" id="RESTART_LIMIT">RESTART_LIMIT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RESTART_LIMIT</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Cosine of the angle between two consecutive searching directions. If the angle during a CG optimization is less than the one corresponding to  to the RESTART_LIMIT the CG is reset and one step of steepest descent is  performed.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">9.00000000E-001</code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

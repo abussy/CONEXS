@@ -1,0 +1,941 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / LS_SCF / PAO</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Polarized Atomic Orbital Method">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/LS_SCF/PAO.html">Section PAO</a></h2>
+      <ul class="none">
+         <li><em>Polarized Atomic Orbital Method</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../../DFT.html">DFT</a> /
+               <a href="../LS_SCF.html">LS_SCF</a> /
+               <a href="PAO.html">PAO</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../../references.html#reference_157">Berghold2002</a>]
+            
+            [<a href="../../../../references.html#reference_195">Schuett2018</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="PAO/LINE_SEARCH.html">LINE_SEARCH</a></li>
+               <li><a href="PAO/MACHINE_LEARNING.html">MACHINE_LEARNING</a></li>
+               <li><a href="PAO/PRINT.html">PRINT</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#CG_INIT_STEPS" id="list_CG_INIT_STEPS">CG_INIT_STEPS</a></li>
+               <li><a href="#CG_RESET_LIMIT" id="list_CG_RESET_LIMIT">CG_RESET_LIMIT</a></li>
+               <li><a href="#CHECK_GRADIENT_TOL" id="list_CHECK_GRADIENT_TOL">CHECK_GRADIENT_TOL</a></li>
+               <li><a href="#CHECK_UNITARY_TOL" id="list_CHECK_UNITARY_TOL">CHECK_UNITARY_TOL</a></li>
+               <li><a href="#EPS_PAO" id="list_EPS_PAO">EPS_PAO</a></li>
+               <li><a href="#EPS_PGF" id="list_EPS_PGF">EPS_PGF</a></li>
+               <li><a href="#LINPOT_INITGUESS_DELTA" id="list_LINPOT_INITGUESS_DELTA">LINPOT_INITGUESS_DELTA</a></li>
+               <li><a href="#LINPOT_PRECONDITION_DELTA" id="list_LINPOT_PRECONDITION_DELTA">LINPOT_PRECONDITION_DELTA</a></li>
+               <li><a href="#LINPOT_REGULARIZATION_DELTA" id="list_LINPOT_REGULARIZATION_DELTA">LINPOT_REGULARIZATION_DELTA</a></li>
+               <li><a href="#LINPOT_REGULARIZATION_STRENGTH" id="list_LINPOT_REGULARIZATION_STRENGTH">LINPOT_REGULARIZATION_STRENGTH</a></li>
+               <li><a href="#MAX_CYCLES" id="list_MAX_CYCLES">MAX_CYCLES</a></li>
+               <li><a href="#MAX_PAO" id="list_MAX_PAO">MAX_PAO</a></li>
+               <li><a href="#MIXING" id="list_MIXING">MIXING</a></li>
+               <li><a href="#NUM_GRADIENT_EPS" id="list_NUM_GRADIENT_EPS">NUM_GRADIENT_EPS</a></li>
+               <li><a href="#NUM_GRADIENT_ORDER" id="list_NUM_GRADIENT_ORDER">NUM_GRADIENT_ORDER</a></li>
+               <li><a href="#OPTIMIZER" id="list_OPTIMIZER">OPTIMIZER</a></li>
+               <li><a href="#PARAMETERIZATION" id="list_PARAMETERIZATION">PARAMETERIZATION</a></li>
+               <li><a href="#PENALTY_DISTANCE" id="list_PENALTY_DISTANCE">PENALTY_DISTANCE</a></li>
+               <li><a href="#PENALTY_STRENGTH" id="list_PENALTY_STRENGTH">PENALTY_STRENGTH</a></li>
+               <li><a href="#PRECONDITION" id="list_PRECONDITION">PRECONDITION</a></li>
+               <li><a href="#PREOPT_DM_FILE" id="list_PREOPT_DM_FILE">PREOPT_DM_FILE</a></li>
+               <li><a href="#REGULARIZATION" id="list_REGULARIZATION">REGULARIZATION</a></li>
+               <li><a href="#RESTART_FILE" id="list_RESTART_FILE">RESTART_FILE</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CG_INIT_STEPS"></a><a href="#list_CG_INIT_STEPS" id="CG_INIT_STEPS">CG_INIT_STEPS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CG_INIT_STEPS</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of steepest descent steps before starting the conjugate gradients optimization.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CG_RESET_LIMIT"></a><a href="#list_CG_RESET_LIMIT" id="CG_RESET_LIMIT">CG_RESET_LIMIT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CG_RESET_LIMIT</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The CG is reseted if the cosine of the angle between the last search direction and the new gradient is larger that the limit.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-001</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CHECK_GRADIENT_TOL"></a><a href="#list_CHECK_GRADIENT_TOL" id="CHECK_GRADIENT_TOL">CHECK_GRADIENT_TOL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CHECK_GRADIENT_TOL</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Tolerance for check of full analytic gradient against the numeric one. Negative values mean don't check at all.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CHECK_UNITARY_TOL"></a><a href="#list_CHECK_UNITARY_TOL" id="CHECK_UNITARY_TOL">CHECK_UNITARY_TOL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CHECK_UNITARY_TOL</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Check if rotation matrix is unitary. Negative values mean don't check at all.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_PAO"></a><a href="#list_EPS_PAO" id="EPS_PAO">EPS_PAO</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_PAO</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Convergence criteria for PAO optimization.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-005</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_PGF"></a><a href="#list_EPS_PGF" id="EPS_PGF">EPS_PGF</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_PGF</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Sets precision for potential and descriptor matrix elements. Overrides DFT/QS/EPS_DEFAULT value.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LINPOT_INITGUESS_DELTA"></a><a href="#list_LINPOT_INITGUESS_DELTA" id="LINPOT_INITGUESS_DELTA">LINPOT_INITGUESS_DELTA</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LINPOT_INITGUESS_DELTA</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Eigenvalue threshold used for calculating initial guess.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LINPOT_PRECONDITION_DELTA"></a><a href="#list_LINPOT_PRECONDITION_DELTA" id="LINPOT_PRECONDITION_DELTA">LINPOT_PRECONDITION_DELTA</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LINPOT_PRECONDITION_DELTA</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Eigenvalue threshold used for preconditioning.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LINPOT_REGULARIZATION_DELTA"></a><a href="#list_LINPOT_REGULARIZATION_DELTA" id="LINPOT_REGULARIZATION_DELTA">LINPOT_REGULARIZATION_DELTA</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LINPOT_REGULARIZATION_DELTA</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Eigenvalue threshold used for regularization.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LINPOT_REGULARIZATION_STRENGTH"></a><a href="#list_LINPOT_REGULARIZATION_STRENGTH" id="LINPOT_REGULARIZATION_STRENGTH">LINPOT_REGULARIZATION_STRENGTH</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LINPOT_REGULARIZATION_STRENGTH</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Strength of regularization on linpot layer.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_CYCLES"></a><a href="#list_MAX_CYCLES" id="MAX_CYCLES">MAX_CYCLES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_CYCLES</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum number of PAO line search cycles for a given hamiltonian.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_PAO"></a><a href="#list_MAX_PAO" id="MAX_PAO">MAX_PAO</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_PAO</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum number of PAO basis optimization steps.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MIXING"></a><a href="#list_MIXING" id="MIXING">MIXING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MIXING</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Mixing fraction of new and old optimizied solutions.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">5.00000000E-001</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NUM_GRADIENT_EPS"></a><a href="#list_NUM_GRADIENT_EPS" id="NUM_GRADIENT_EPS">NUM_GRADIENT_EPS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NUM_GRADIENT_EPS</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Step length used for the numeric derivative when checking the gradient.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-008</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NUM_GRADIENT_ORDER"></a><a href="#list_NUM_GRADIENT_ORDER" id="NUM_GRADIENT_ORDER">NUM_GRADIENT_ORDER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NUM_GRADIENT_ORDER</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Order of the numeric derivative when checking the gradient. Possible values are 2, 4, and 6.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_OPTIMIZER"></a><a href="#list_OPTIMIZER" id="OPTIMIZER">OPTIMIZER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">OPTIMIZER</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Optimizer used to find PAO basis.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">CG</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BFGS</code></dt>
+                              <dd><em>Broyden-Fletcher-Goldfarb-Shanno algorithm</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">CG</code></dt>
+                              <dd><em>Conjugate gradient algorithm</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PARAMETERIZATION"></a><a href="#list_PARAMETERIZATION" id="PARAMETERIZATION">PARAMETERIZATION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PARAMETERIZATION</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Parametrization of the mapping between the primary and the PAO basis.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">ROTINV</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">EXP</code></dt>
+                              <dd><em>Original matrix exponential parametrization</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FOCK</code></dt>
+                              <dd><em>Fock matrix parametrization</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">GTH</code></dt>
+                              <dd><em>Parametrization based on GTH pseudo potentials</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ROTINV</code></dt>
+                              <dd><em>Rotational invariant parametrization (machine learnable)</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PENALTY_DISTANCE"></a><a href="#list_PENALTY_DISTANCE" id="PENALTY_DISTANCE">PENALTY_DISTANCE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PENALTY_DISTANCE</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Distance at which approaching eigenvalues are penalized to prevent degeneration.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-001</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PENALTY_STRENGTH"></a><a href="#list_PENALTY_STRENGTH" id="PENALTY_STRENGTH">PENALTY_STRENGTH</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PENALTY_STRENGTH</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Strength of the penalty term which prevents degenerate eigenvalues.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">5.00000000E-003</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PRECONDITION"></a><a href="#list_PRECONDITION" id="PRECONDITION">PRECONDITION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PRECONDITION</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Apply a preconditioner to the parametrization.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PREOPT_DM_FILE"></a><a href="#list_PREOPT_DM_FILE" id="PREOPT_DM_FILE">PREOPT_DM_FILE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PREOPT_DM_FILE</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Read pre-optimized density matrix from given file.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_REGULARIZATION"></a><a href="#list_REGULARIZATION" id="REGULARIZATION">REGULARIZATION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">REGULARIZATION</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Strength of regularization term which ensures parameters remain small.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RESTART_FILE"></a><a href="#list_RESTART_FILE" id="RESTART_FILE">RESTART_FILE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RESTART_FILE</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Reads given files as restart for PAO basis</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

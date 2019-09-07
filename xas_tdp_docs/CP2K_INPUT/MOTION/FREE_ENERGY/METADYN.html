@@ -1,0 +1,1054 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / MOTION / FREE_ENERGY / METADYN</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="This section sets parameters to set up a calculation of metadynamics.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../index.html#CP2K_INPUT/MOTION/FREE_ENERGY/METADYN.html">Section METADYN</a></h2>
+      <ul class="none">
+         <li><em>This section sets parameters to set up a calculation of metadynamics.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../MOTION.html">MOTION</a> /
+               <a href="../FREE_ENERGY.html">FREE_ENERGY</a> /
+               <a href="METADYN.html">METADYN</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following reference:
+            
+            [<a href="../../../references.html#reference_8">VandenEijnden2006</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="METADYN/EXT_LAGRANGE_FS.html">EXT_LAGRANGE_FS</a></li>
+               <li><a href="METADYN/EXT_LAGRANGE_SS.html">EXT_LAGRANGE_SS</a></li>
+               <li><a href="METADYN/EXT_LAGRANGE_SS0.html">EXT_LAGRANGE_SS0</a></li>
+               <li><a href="METADYN/EXT_LAGRANGE_VVP.html">EXT_LAGRANGE_VVP</a></li>
+               <li><a href="METADYN/METAVAR.html">METAVAR</a></li>
+               <li><a href="METADYN/MULTIPLE_WALKERS.html">MULTIPLE_WALKERS</a></li>
+               <li><a href="METADYN/PRINT.html">PRINT</a></li>
+               <li><a href="METADYN/SPAWNED_HILLS_HEIGHT.html">SPAWNED_HILLS_HEIGHT</a></li>
+               <li><a href="METADYN/SPAWNED_HILLS_INVDT.html">SPAWNED_HILLS_INVDT</a></li>
+               <li><a href="METADYN/SPAWNED_HILLS_POS.html">SPAWNED_HILLS_POS</a></li>
+               <li><a href="METADYN/SPAWNED_HILLS_SCALE.html">SPAWNED_HILLS_SCALE</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#COLVAR_AVG_TEMPERATURE_RESTART" id="list_COLVAR_AVG_TEMPERATURE_RESTART">COLVAR_AVG_TEMPERATURE_RESTART</a></li>
+               <li><a href="#DELTA_T" id="list_DELTA_T">DELTA_T</a></li>
+               <li><a href="#DO_HILLS" id="list_DO_HILLS">DO_HILLS</a></li>
+               <li><a href="#HILL_TAIL_CUTOFF" id="list_HILL_TAIL_CUTOFF">HILL_TAIL_CUTOFF</a></li>
+               <li><a href="#LAGRANGE" id="list_LAGRANGE">LAGRANGE</a></li>
+               <li><a href="#LANGEVIN" id="list_LANGEVIN">LANGEVIN</a></li>
+               <li><a href="#MIN_DISP" id="list_MIN_DISP">MIN_DISP</a></li>
+               <li><a href="#MIN_NT_HILLS" id="list_MIN_NT_HILLS">MIN_NT_HILLS</a></li>
+               <li><a href="#NHILLS_START_VAL" id="list_NHILLS_START_VAL">NHILLS_START_VAL</a></li>
+               <li><a href="#NT_HILLS" id="list_NT_HILLS">NT_HILLS</a></li>
+               <li><a href="#OLD_HILL_NUMBER" id="list_OLD_HILL_NUMBER">OLD_HILL_NUMBER</a></li>
+               <li><a href="#OLD_HILL_STEP" id="list_OLD_HILL_STEP">OLD_HILL_STEP</a></li>
+               <li><a href="#PLUMED_INPUT_FILE" id="list_PLUMED_INPUT_FILE">PLUMED_INPUT_FILE</a></li>
+               <li><a href="#P_EXPONENT" id="list_P_EXPONENT">P_EXPONENT</a></li>
+               <li><a href="#Q_EXPONENT" id="list_Q_EXPONENT">Q_EXPONENT</a></li>
+               <li><a href="#SLOW_GROWTH" id="list_SLOW_GROWTH">SLOW_GROWTH</a></li>
+               <li><a href="#STEP_START_VAL" id="list_STEP_START_VAL">STEP_START_VAL</a></li>
+               <li><a href="#TAMCSTEPS" id="list_TAMCSTEPS">TAMCSTEPS</a></li>
+               <li><a href="#TEMPERATURE" id="list_TEMPERATURE">TEMPERATURE</a></li>
+               <li><a href="#TEMP_TOL" id="list_TEMP_TOL">TEMP_TOL</a></li>
+               <li><a href="#TIMESTEP" id="list_TIMESTEP">TIMESTEP</a></li>
+               <li><a href="#USE_PLUMED" id="list_USE_PLUMED">USE_PLUMED</a></li>
+               <li><a href="#WELL_TEMPERED" id="list_WELL_TEMPERED">WELL_TEMPERED</a></li>
+               <li><a href="#WTGAMMA" id="list_WTGAMMA">WTGAMMA</a></li>
+               <li><a href="#WW" id="list_WW">WW</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_COLVAR_AVG_TEMPERATURE_RESTART"></a><a href="#list_COLVAR_AVG_TEMPERATURE_RESTART" id="COLVAR_AVG_TEMPERATURE_RESTART">COLVAR_AVG_TEMPERATURE_RESTART</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">COLVAR_AVG_TEMPERATURE_RESTART</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>COLVAR average temperature. Only for restarting purposes.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_DELTA_T"></a><a href="#list_DELTA_T" id="DELTA_T">DELTA_T</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">DELTA_T</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If Well-tempered metaD is used, the temperature parameter must be specified.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [K]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_DO_HILLS"></a><a href="#list_DO_HILLS" id="DO_HILLS">DO_HILLS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">DO_HILLS</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>This keyword enables the spawning of the hills. Default .FALSE.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_HILL_TAIL_CUTOFF"></a><a href="#list_HILL_TAIL_CUTOFF" id="HILL_TAIL_CUTOFF">HILL_TAIL_CUTOFF</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">HILL_TAIL_CUTOFF</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>By setting this variable larger than 0 the tail of the Gaussian hill  is damped to zero faster. The Gaussian function is multiplied by a cutoff function that becomes active at |x-X0|>HILL_TAIL_CUTOFF*SCALE, where X0 is the location of the Gaussian and SCALE is the width of the Gaussian. For more than one METAVAR X0 and SCALE are METAVAR-dependent.  (1-(|x-X0|/HILL_TAIL_CUTOFF*SCALE)^P_EXP)/(1-(|x-X0|/HILL_TAIL_CUTOFF*SCALE)^Q_EXP)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LAGRANGE"></a><a href="#list_LAGRANGE" id="LAGRANGE">LAGRANGE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LAGRANGE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies whether an extended-lagrangian should be used. Default .FALSE.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LANGEVIN"></a><a href="#list_LANGEVIN" id="LANGEVIN">LANGEVIN</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LANGEVIN</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If a Lagrangian scheme is used the eq. motion of the COLVARS are integrated with a LANGEVIN scheme.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../../../references.html#reference_8">VandenEijnden2006</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MIN_DISP"></a><a href="#list_MIN_DISP" id="MIN_DISP">MIN_DISP</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MIN_DISP</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Minimum displacement between hills before placing a new hill.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MIN_NT_HILLS"></a><a href="#list_MIN_NT_HILLS" id="MIN_NT_HILLS">MIN_NT_HILLS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MIN_NT_HILLS</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the minimum MD step interval between spawning two hills. If specified, it must be >= than NT_HILLS. In case MIN_DISP is used, if MIN_DISP is satisfied before MIN_NT_HILLS MD steps have been performed, the MD will continue without any spawning until MIN_NT_HILLS is reached. The default value has the net effect of skipping this check.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NHILLS_START_VAL"></a><a href="#list_NHILLS_START_VAL" id="NHILLS_START_VAL">NHILLS_START_VAL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NHILLS_START_VAL</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The starting value of previously spawned hills</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NT_HILLS"></a><a href="#list_NT_HILLS" id="NT_HILLS">NT_HILLS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NT_HILLS</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the maximum MD step interval between spawning two hills. When negative, no new hills are spawned and only the hills read from SPAWNED_HILLS_* are in effect. The latteris useful when one wants to add a custom constant bias potential.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">30</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_OLD_HILL_NUMBER"></a><a href="#list_OLD_HILL_NUMBER" id="OLD_HILL_NUMBER">OLD_HILL_NUMBER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">OLD_HILL_NUMBER</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Index of the last hill spawned for this walker.Needed to calculate MIN_DISP</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_OLD_HILL_STEP"></a><a href="#list_OLD_HILL_STEP" id="OLD_HILL_STEP">OLD_HILL_STEP</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">OLD_HILL_STEP</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Timestep of the last hill spawned for this walker.Needed to calculate MIN_DISP</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PLUMED_INPUT_FILE"></a><a href="#list_PLUMED_INPUT_FILE" id="PLUMED_INPUT_FILE">PLUMED_INPUT_FILE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PLUMED_INPUT_FILE</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the file name of the external plumed input file</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">./plumed.dat</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_P_EXPONENT"></a><a href="#list_P_EXPONENT" id="P_EXPONENT">P_EXPONENT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">P_EXPONENT</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Exponent at the numerator of the cutoff function to damp the tail of the Gaussian.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">8</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_Q_EXPONENT"></a><a href="#list_Q_EXPONENT" id="Q_EXPONENT">Q_EXPONENT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">Q_EXPONENT</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Exponent at the denominator of the cutoff function to damp the tail of the Gaussian.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">20</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SLOW_GROWTH"></a><a href="#list_SLOW_GROWTH" id="SLOW_GROWTH">SLOW_GROWTH</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SLOW_GROWTH</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Let the last hill grow slowly over NT_HILLS.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_STEP_START_VAL"></a><a href="#list_STEP_START_VAL" id="STEP_START_VAL">STEP_START_VAL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">STEP_START_VAL</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The starting step value for metadynamics</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TAMCSTEPS"></a><a href="#list_TAMCSTEPS" id="TAMCSTEPS">TAMCSTEPS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TAMCSTEPS</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of sampling points for z</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TEMPERATURE"></a><a href="#list_TEMPERATURE" id="TEMPERATURE">TEMPERATURE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TEMPERATURE</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If a Lagrangian scheme is used the temperature for the collective variables is specified.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [K]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TEMP_TOL"></a><a href="#list_TEMP_TOL" id="TEMP_TOL">TEMP_TOL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TEMP_TOL</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If a Lagrangian scheme is used the temperature tolerance for the collective variables is specified.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [K]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TIMESTEP"></a><a href="#list_TIMESTEP" id="TIMESTEP">TIMESTEP</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TIMESTEP</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The length of an integration step for colvars (TAMC only)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">5.00000000E-001</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [fs]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_USE_PLUMED"></a><a href="#list_USE_PLUMED" id="USE_PLUMED">USE_PLUMED</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">USE_PLUMED</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify whether to use plumed as an external metadynamics driver.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_WELL_TEMPERED"></a><a href="#list_WELL_TEMPERED" id="WELL_TEMPERED">WELL_TEMPERED</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">WELL_TEMPERED</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>This keyword enables Well-tempered metadynamics. Default .FALSE.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../../../references.html#reference_106">Barducci2008</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_WTGAMMA"></a><a href="#list_WTGAMMA" id="WTGAMMA">WTGAMMA</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">WTGAMMA</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If Well-tempered metaD is used, the gamma parameter must be specified if not DELTA_T.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_WW"></a><a href="#list_WW" id="WW">WW</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">WW</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the height of the gaussian to spawn. Default 0.1 .</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-001</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

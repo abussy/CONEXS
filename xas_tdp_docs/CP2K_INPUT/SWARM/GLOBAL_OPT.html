@@ -1,0 +1,344 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / SWARM / GLOBAL_OPT</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Section to control global geometry optimizations.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../index.html#CP2K_INPUT/SWARM/GLOBAL_OPT.html">Section GLOBAL_OPT</a></h2>
+      <ul class="none">
+         <li><em>Section to control global geometry optimizations.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../SWARM.html">SWARM</a> /
+               <a href="GLOBAL_OPT.html">GLOBAL_OPT</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="GLOBAL_OPT/HISTORY.html">HISTORY</a></li>
+               <li><a href="GLOBAL_OPT/MINIMA_CRAWLING.html">MINIMA_CRAWLING</a></li>
+               <li><a href="GLOBAL_OPT/MINIMA_HOPPING.html">MINIMA_HOPPING</a></li>
+               <li><a href="GLOBAL_OPT/PROGRESS_TRAJECTORY.html">PROGRESS_TRAJECTORY</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#BUMP_STEPS_DOWNWARDS" id="list_BUMP_STEPS_DOWNWARDS">BUMP_STEPS_DOWNWARDS</a></li>
+               <li><a href="#BUMP_STEPS_UPWARDS" id="list_BUMP_STEPS_UPWARDS">BUMP_STEPS_UPWARDS</a></li>
+               <li><a href="#E_TARGET" id="list_E_TARGET">E_TARGET</a></li>
+               <li><a href="#FRAGMENTATION_THRESHOLD" id="list_FRAGMENTATION_THRESHOLD">FRAGMENTATION_THRESHOLD</a></li>
+               <li><a href="#MD_BUMPS_MAX" id="list_MD_BUMPS_MAX">MD_BUMPS_MAX</a></li>
+               <li><a href="#METHOD" id="list_METHOD">METHOD</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_BUMP_STEPS_DOWNWARDS"></a><a href="#list_BUMP_STEPS_DOWNWARDS" id="BUMP_STEPS_DOWNWARDS">BUMP_STEPS_DOWNWARDS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">BUMP_STEPS_DOWNWARDS</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of MD steps with potential energy decreases required for a bump.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_BUMP_STEPS_UPWARDS"></a><a href="#list_BUMP_STEPS_UPWARDS" id="BUMP_STEPS_UPWARDS">BUMP_STEPS_UPWARDS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">BUMP_STEPS_UPWARDS</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of MD steps with potential energy increases required for a bump.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_E_TARGET"></a><a href="#list_E_TARGET" id="E_TARGET">E_TARGET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">E_TARGET</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Target Energy, the optimization will quit once a lower potential energy is reached.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1.79769313E+308</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FRAGMENTATION_THRESHOLD"></a><a href="#list_FRAGMENTATION_THRESHOLD" id="FRAGMENTATION_THRESHOLD">FRAGMENTATION_THRESHOLD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FRAGMENTATION_THRESHOLD</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Threshold for atom distance used for detecting fragmentation of clusters.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.05835442E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../units.html">Default unit:</a><code>
+                        [angstrom]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MD_BUMPS_MAX"></a><a href="#list_MD_BUMPS_MAX" id="MD_BUMPS_MAX">MD_BUMPS_MAX</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MD_BUMPS_MAX</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of bumps in potential energy after which MD runs ends.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">3</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_METHOD"></a><a href="#list_METHOD" id="METHOD">METHOD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">METHOD</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Methods to use for optimization.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">MINIMA_HOPPING</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MINIMA_CRAWLING</code></dt>
+                              <dd><em>Runs Minima-Crawling algorithm.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MINIMA_HOPPING</code></dt>
+                              <dd><em>Runs Minima-Hopping algorithm.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

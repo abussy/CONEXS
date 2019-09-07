@@ -1,0 +1,1215 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / SUBSYS / KIND</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="The description of the kind of the atoms (mostly for QM)">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../index.html#CP2K_INPUT/FORCE_EVAL/SUBSYS/KIND.html">Section KIND</a></h2>
+      <ul class="none">
+         <li><em>The description of the kind of the atoms (mostly for QM)</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../SUBSYS.html">SUBSYS</a> /
+               <a href="KIND.html">KIND</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section can be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="KIND/BASIS.html">BASIS</a></li>
+               <li><a href="KIND/BS.html">BS</a></li>
+               <li><a href="KIND/DFT_PLUS_U.html">DFT_PLUS_U</a></li>
+               <li><a href="KIND/KG_POTENTIAL.html">KG_POTENTIAL</a></li>
+               <li><a href="KIND/PAO_DESCRIPTOR.html">PAO_DESCRIPTOR</a></li>
+               <li><a href="KIND/PAO_POTENTIAL.html">PAO_POTENTIAL</a></li>
+               <li><a href="KIND/POTENTIAL.html">POTENTIAL</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#SECTION_PARAMETERS" id="list_SECTION_PARAMETERS">SECTION_PARAMETERS</a></li>
+            </ul>
+            <ul class="disc">
+               <li><a href="#AUX_BASIS_SET" id="list_AUX_BASIS_SET">AUX_BASIS_SET</a></li>
+               <li><a href="#AUX_FIT_BASIS_SET" id="list_AUX_FIT_BASIS_SET">AUX_FIT_BASIS_SET</a></li>
+               <li><a href="#BASIS_SET" id="list_BASIS_SET">BASIS_SET</a></li>
+               <li><a href="#CORE_CORRECTION" id="list_CORE_CORRECTION">CORE_CORRECTION</a></li>
+               <li><a href="#DFTB3_PARAM" id="list_DFTB3_PARAM">DFTB3_PARAM</a></li>
+               <li><a href="#ELEC_CONF" id="list_ELEC_CONF">ELEC_CONF</a></li>
+               <li><a href="#ELEMENT" id="list_ELEMENT">ELEMENT</a></li>
+               <li><a href="#FLOATING_BASIS_CENTER" id="list_FLOATING_BASIS_CENTER">FLOATING_BASIS_CENTER</a></li>
+               <li><a href="#GHOST" id="list_GHOST">GHOST</a></li>
+               <li><a href="#GPW_TYPE" id="list_GPW_TYPE">GPW_TYPE</a></li>
+               <li><a href="#HARD_EXP_RADIUS" id="list_HARD_EXP_RADIUS">HARD_EXP_RADIUS</a></li>
+               <li><a href="#KG_POTENTIAL" id="list_KG_POTENTIAL">KG_POTENTIAL</a></li>
+               <li><a href="#KG_POTENTIAL_FILE_NAME" id="list_KG_POTENTIAL_FILE_NAME">KG_POTENTIAL_FILE_NAME</a></li>
+               <li><a href="#LEBEDEV_GRID" id="list_LEBEDEV_GRID">LEBEDEV_GRID</a></li>
+               <li><a href="#LMAX_DFTB" id="list_LMAX_DFTB">LMAX_DFTB</a></li>
+               <li><a href="#LRI_BASIS_SET" id="list_LRI_BASIS_SET">LRI_BASIS_SET</a></li>
+               <li><a href="#MAGNETIZATION" id="list_MAGNETIZATION">MAGNETIZATION</a></li>
+               <li><a href="#MAO" id="list_MAO">MAO</a></li>
+               <li><a href="#MASS" id="list_MASS">MASS</a></li>
+               <li><a href="#MAX_RAD_LOCAL" id="list_MAX_RAD_LOCAL">MAX_RAD_LOCAL</a></li>
+               <li><a href="#MM_RADIUS" id="list_MM_RADIUS">MM_RADIUS</a></li>
+               <li><a href="#NO_OPTIMIZE" id="list_NO_OPTIMIZE">NO_OPTIMIZE</a></li>
+               <li><a href="#PAO_BASIS_SIZE" id="list_PAO_BASIS_SIZE">PAO_BASIS_SIZE</a></li>
+               <li><a href="#POTENTIAL" id="list_POTENTIAL">POTENTIAL</a></li>
+               <li><a href="#POTENTIAL_FILE_NAME" id="list_POTENTIAL_FILE_NAME">POTENTIAL_FILE_NAME</a></li>
+               <li><a href="#POTENTIAL_TYPE" id="list_POTENTIAL_TYPE">POTENTIAL_TYPE</a></li>
+               <li><a href="#RADIAL_GRID" id="list_RADIAL_GRID">RADIAL_GRID</a></li>
+               <li><a href="#RHO0_EXP_RADIUS" id="list_RHO0_EXP_RADIUS">RHO0_EXP_RADIUS</a></li>
+               <li><a href="#RI_AUX_BASIS_SET" id="list_RI_AUX_BASIS_SET">RI_AUX_BASIS_SET</a></li>
+               <li><a href="#SE_P_ORBITALS_ON_H" id="list_SE_P_ORBITALS_ON_H">SE_P_ORBITALS_ON_H</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SECTION_PARAMETERS"></a><a href="#list_SECTION_PARAMETERS" id="SECTION_PARAMETERS">SECTION_PARAMETERS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">&amp;KIND</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The name of the kind described in this section.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">DEFAULT</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_AUX_BASIS_SET"></a><a href="#list_AUX_BASIS_SET" id="AUX_BASIS_SET">AUX_BASIS_SET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">AUX_BASIS_SET</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>DEPRECATED (use BASIS_SET): The auxiliary basis set (GTO type)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     AUXILIARY_BASIS_SET,
+                     AUX_BASIS</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_AUX_FIT_BASIS_SET"></a><a href="#list_AUX_FIT_BASIS_SET" id="AUX_FIT_BASIS_SET">AUX_FIT_BASIS_SET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">AUX_FIT_BASIS_SET</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>DEPRECATED (use BASIS_SET): The auxiliary basis set (GTO type) for auxiliary density matrix method</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     AUXILIARY_FIT_BASIS_SET,
+                     AUX_FIT_BASIS</td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../../../references.html#reference_107">Guidon2010</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_BASIS_SET"></a><a href="#list_BASIS_SET" id="BASIS_SET">BASIS_SET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">BASIS_SET</code><code>&nbsp;{Word}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The primary Gaussian basis set (NONE implies no basis used, meaningful with GHOST)Defaults are set for TYPE {ORB} and FORM {GTO}. Possible values for TYPE are {ORB, AUX, RI_AUX, LRI, ...}. Possible values for FORM are {GTO, STO}. Where STO results in a GTO expansion of a Slater type basis.If a value for FORM is given, also TYPE has to be set explicitly.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword can be repeated
+                     and it expects
+                     
+                     a list of words.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following references:
+                     
+                     [<a href="../../../references.html#reference_39">VandeVondele2005</a>]
+                     
+                     [<a href="../../../references.html#reference_68">VandeVondele2007</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CORE_CORRECTION"></a><a href="#list_CORE_CORRECTION" id="CORE_CORRECTION">CORE_CORRECTION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CORE_CORRECTION</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Corrects the effective nuclear charge</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_DFTB3_PARAM"></a><a href="#list_DFTB3_PARAM" id="DFTB3_PARAM">DFTB3_PARAM</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">DFTB3_PARAM</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The third order parameter (derivative of hardness) used in diagonal DFTB3 correction.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ELEC_CONF"></a><a href="#list_ELEC_CONF" id="ELEC_CONF">ELEC_CONF</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ELEC_CONF</code><code>&nbsp;{Integer}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the electronic configuration used in construction the atomic initial guess (see the pseudo potential file for the default values.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of integers.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ELEMENT"></a><a href="#list_ELEMENT" id="ELEMENT">ELEMENT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ELEMENT</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The element of the actual kind (if not given it is inferred from the kind name)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     ELEMENT_SYMBOL</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FLOATING_BASIS_CENTER"></a><a href="#list_FLOATING_BASIS_CENTER" id="FLOATING_BASIS_CENTER">FLOATING_BASIS_CENTER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FLOATING_BASIS_CENTER</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>This keyword makes all atoms of this kind floating functions, i.e. without pseudo or nuclear chargewhich are subject to a geometry optimization in the outer SCF.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_GHOST"></a><a href="#list_GHOST" id="GHOST">GHOST</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">GHOST</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>This keyword makes all atoms of this kind ghost atoms, i.e. without pseudo or nuclear charge. Useful to just have the basis set at that position (e.g. BSSE calculations), or to have a non-interacting particle with BASIS_SET NONE</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_GPW_TYPE"></a><a href="#list_GPW_TYPE" id="GPW_TYPE">GPW_TYPE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">GPW_TYPE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Force one type to be treated by the GPW scheme, whatever are its primitives, even if the GAPW method is used</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_HARD_EXP_RADIUS"></a><a href="#list_HARD_EXP_RADIUS" id="HARD_EXP_RADIUS">HARD_EXP_RADIUS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">HARD_EXP_RADIUS</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The region where the hard density is supposed to be confined(GAPW)(in Bohr, default is 1.2 for H and 1.512 otherwise)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_KG_POTENTIAL"></a><a href="#list_KG_POTENTIAL" id="KG_POTENTIAL">KG_POTENTIAL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">KG_POTENTIAL</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The name of the non-additive atomic kinetic energy potential.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">NONE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     KG_POT</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_KG_POTENTIAL_FILE_NAME"></a><a href="#list_KG_POTENTIAL_FILE_NAME" id="KG_POTENTIAL_FILE_NAME">KG_POTENTIAL_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">KG_POTENTIAL_FILE_NAME</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The name of the file where to find this kinds KG potential. Default file is specified in DFT section.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LEBEDEV_GRID"></a><a href="#list_LEBEDEV_GRID" id="LEBEDEV_GRID">LEBEDEV_GRID</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LEBEDEV_GRID</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The number of points for the angular part of the local grid (GAPW)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">50</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LMAX_DFTB"></a><a href="#list_LMAX_DFTB" id="LMAX_DFTB">LMAX_DFTB</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LMAX_DFTB</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The maximum l-quantum number of the DFTB basis for this kind.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LRI_BASIS_SET"></a><a href="#list_LRI_BASIS_SET" id="LRI_BASIS_SET">LRI_BASIS_SET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LRI_BASIS_SET</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>DEPRECATED (use BASIS_SET): The local resolution of identity basis set (GTO type)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     LRI_BASIS</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAGNETIZATION"></a><a href="#list_MAGNETIZATION" id="MAGNETIZATION">MAGNETIZATION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAGNETIZATION</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The magnetization used in the atomic initial guess. Adds magnetization/2 spin-alpha electrons and removes magnetization/2 spin-beta electrons.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAO"></a><a href="#list_MAO" id="MAO">MAO</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAO</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The number of MAOs (Modified Atomic Orbitals) for this kind.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MASS"></a><a href="#list_MASS" id="MASS">MASS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MASS</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The mass of the atom (if negative or non present it is inferred from the element symbol)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     ATOMIC_MASS,
+                     ATOMIC_WEIGHT,
+                     WEIGHT</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_RAD_LOCAL"></a><a href="#list_MAX_RAD_LOCAL" id="MAX_RAD_LOCAL">MAX_RAD_LOCAL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_RAD_LOCAL</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Max radius for the basis functions used to generate the local projectors in GAPW [Bohr]</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2.45664397E+001</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MM_RADIUS"></a><a href="#list_MM_RADIUS" id="MM_RADIUS">MM_RADIUS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MM_RADIUS</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Defines the radius of the electrostatic multipole of the atom in Fist. This radius applies to the charge, the dipole and the quadrupole. When zero, the atom is treated as a point multipole, otherwise it is treated as a Gaussian charge distribution with the given radius: p(x,y,z)*N*exp(-(x**2+y**2+z**2)/(2*MM_RADIUS**2)), where N is a normalization constant. In the core-shell model, only the shell is treated as a Gaussian and the core is always a point charge.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [angstrom]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NO_OPTIMIZE"></a><a href="#list_NO_OPTIMIZE" id="NO_OPTIMIZE">NO_OPTIMIZE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NO_OPTIMIZE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Skip optimization of this type (used in specific basis set or potential optimization schemes</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PAO_BASIS_SIZE"></a><a href="#list_PAO_BASIS_SIZE" id="PAO_BASIS_SIZE">PAO_BASIS_SIZE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PAO_BASIS_SIZE</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The block size used for the polarized atomic orbital basis. Setting PAO_BASIS_SIZE to the size of the primary basis or to a value below one will disables the PAO method for the given atomic kind. By default PAO is disbabled.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_POTENTIAL"></a><a href="#list_POTENTIAL" id="POTENTIAL">POTENTIAL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">POTENTIAL</code><code>&nbsp;{Word}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The type and name of the pseudopotential for the defined kind.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of words.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     POT</td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following references:
+                     
+                     [<a href="../../../references.html#reference_43">Goedecker1996</a>]
+                     
+                     [<a href="../../../references.html#reference_44">Hartwigsen1998</a>]
+                     
+                     [<a href="../../../references.html#reference_45">Krack2005</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_POTENTIAL_FILE_NAME"></a><a href="#list_POTENTIAL_FILE_NAME" id="POTENTIAL_FILE_NAME">POTENTIAL_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">POTENTIAL_FILE_NAME</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The name of the file where to find this kinds pseudopotential. Default file is specified in DFT section.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_POTENTIAL_TYPE"></a><a href="#list_POTENTIAL_TYPE" id="POTENTIAL_TYPE">POTENTIAL_TYPE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">POTENTIAL_TYPE</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The type of this kinds pseudopotential.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RADIAL_GRID"></a><a href="#list_RADIAL_GRID" id="RADIAL_GRID">RADIAL_GRID</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RADIAL_GRID</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The number of points for the radial part of the local grid (GAPW)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">50</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RHO0_EXP_RADIUS"></a><a href="#list_RHO0_EXP_RADIUS" id="RHO0_EXP_RADIUS">RHO0_EXP_RADIUS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RHO0_EXP_RADIUS</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>the radius which defines the atomic region where the hard compensation density is confined.should be less than HARD_EXP_RADIUS (GAPW)(Bohr, default equals HARD_EXP_RADIUS)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RI_AUX_BASIS_SET"></a><a href="#list_RI_AUX_BASIS_SET" id="RI_AUX_BASIS_SET">RI_AUX_BASIS_SET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RI_AUX_BASIS_SET</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>DEPRECATED (use BASIS_SET): The RI auxiliary basis set used in WF_CORRELATION (GTO type)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     RI_MP2_BASIS_SET,
+                     RI_RPA_BASIS_SET,
+                     RI_AUX_BASIS</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SE_P_ORBITALS_ON_H"></a><a href="#list_SE_P_ORBITALS_ON_H" id="SE_P_ORBITALS_ON_H">SE_P_ORBITALS_ON_H</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SE_P_ORBITALS_ON_H</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Forces the usage of p-orbitals on H for SEMI-EMPIRICAL calculations.  This keyword applies only when the KIND is specifying an Hydrogen element. In all  other cases is simply ignored.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

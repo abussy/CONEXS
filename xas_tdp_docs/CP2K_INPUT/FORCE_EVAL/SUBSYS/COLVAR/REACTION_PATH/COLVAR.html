@@ -1,0 +1,129 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / SUBSYS / COLVAR / REACTION_PATH / COLVAR</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="This section specifies the nature of the collective variables.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../../index.html#CP2K_INPUT/FORCE_EVAL/SUBSYS/COLVAR/REACTION_PATH/COLVAR.html">Section COLVAR</a></h2>
+      <ul class="none">
+         <li><em>This section specifies the nature of the collective variables.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../../../SUBSYS.html">SUBSYS</a> /
+               <a href="../../COLVAR.html">COLVAR</a> /
+               <a href="../REACTION_PATH.html">REACTION_PATH</a> /
+               <a href="COLVAR.html">COLVAR</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section can be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="COLVAR/ACID_HYDRONIUM_DISTANCE.html">ACID_HYDRONIUM_DISTANCE</a></li>
+               <li><a href="COLVAR/ACID_HYDRONIUM_SHELL.html">ACID_HYDRONIUM_SHELL</a></li>
+               <li><a href="COLVAR/ANGLE.html">ANGLE</a></li>
+               <li><a href="COLVAR/ANGLE_PLANE_PLANE.html">ANGLE_PLANE_PLANE</a></li>
+               <li><a href="COLVAR/BOND_ROTATION.html">BOND_ROTATION</a></li>
+               <li><a href="COLVAR/COLVAR_FUNC_INFO.html">COLVAR_FUNC_INFO</a></li>
+               <li><a href="COLVAR/CONDITIONED_DISTANCE.html">CONDITIONED_DISTANCE</a></li>
+               <li><a href="COLVAR/COORDINATION.html">COORDINATION</a></li>
+               <li><a href="COLVAR/DISTANCE.html">DISTANCE</a></li>
+               <li><a href="COLVAR/DISTANCE_FUNCTION.html">DISTANCE_FUNCTION</a></li>
+               <li><a href="COLVAR/DISTANCE_POINT_PLANE.html">DISTANCE_POINT_PLANE</a></li>
+               <li><a href="COLVAR/GYRATION_RADIUS.html">GYRATION_RADIUS</a></li>
+               <li><a href="COLVAR/HBP.html">HBP</a></li>
+               <li><a href="COLVAR/HYDRONIUM_DISTANCE.html">HYDRONIUM_DISTANCE</a></li>
+               <li><a href="COLVAR/HYDRONIUM_SHELL.html">HYDRONIUM_SHELL</a></li>
+               <li><a href="COLVAR/POPULATION.html">POPULATION</a></li>
+               <li><a href="COLVAR/PRINT.html">PRINT</a></li>
+               <li><a href="COLVAR/QPARM.html">QPARM</a></li>
+               <li><a href="COLVAR/RING_PUCKERING.html">RING_PUCKERING</a></li>
+               <li><a href="COLVAR/RMSD.html">RMSD</a></li>
+               <li><a href="COLVAR/TORSION.html">TORSION</a></li>
+               <li><a href="COLVAR/U.html">U</a></li>
+               <li><a href="COLVAR/WC.html">WC</a></li>
+               <li><a href="COLVAR/XYZ_DIAG.html">XYZ_DIAG</a></li>
+               <li><a href="COLVAR/XYZ_OUTERDIAG.html">XYZ_OUTERDIAG</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li>
+                  none
+                  </li>
+            </ul>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

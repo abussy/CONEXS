@@ -1,0 +1,290 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / KG_METHOD / ENERGY_CORRECTION / XC / HF / SCREENING</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Sets up screening parameters if requested">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/KG_METHOD/ENERGY_CORRECTION/XC/HF/SCREENING.html">Section SCREENING</a></h2>
+      <ul class="none">
+         <li><em>Sets up screening parameters if requested</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../../../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../../../../../DFT.html">DFT</a> /
+               <a href="../../../../KG_METHOD.html">KG_METHOD</a> /
+               <a href="../../../ENERGY_CORRECTION.html">ENERGY_CORRECTION</a> /
+               <a href="../../XC.html">XC</a> /
+               <a href="../HF.html">HF</a> /
+               <a href="SCREENING.html">SCREENING</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../../../../../references.html#reference_86">Guidon2008</a>]
+            
+            [<a href="../../../../../../../references.html#reference_105">Guidon2009</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li>
+                  none
+                  </li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#EPS_SCHWARZ" id="list_EPS_SCHWARZ">EPS_SCHWARZ</a></li>
+               <li><a href="#EPS_SCHWARZ_FORCES" id="list_EPS_SCHWARZ_FORCES">EPS_SCHWARZ_FORCES</a></li>
+               <li><a href="#P_SCREEN_CORRECTION_FACTOR" id="list_P_SCREEN_CORRECTION_FACTOR">P_SCREEN_CORRECTION_FACTOR</a></li>
+               <li><a href="#SCREEN_ON_INITIAL_P" id="list_SCREEN_ON_INITIAL_P">SCREEN_ON_INITIAL_P</a></li>
+               <li><a href="#SCREEN_P_FORCES" id="list_SCREEN_P_FORCES">SCREEN_P_FORCES</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_SCHWARZ"></a><a href="#list_EPS_SCHWARZ" id="EPS_SCHWARZ">EPS_SCHWARZ</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_SCHWARZ</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Screens the near field part of the electronic repulsion integrals using the Schwarz inequality for the given threshold.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-010</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_SCHWARZ_FORCES"></a><a href="#list_EPS_SCHWARZ_FORCES" id="EPS_SCHWARZ_FORCES">EPS_SCHWARZ_FORCES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_SCHWARZ_FORCES</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Screens the near field part of the electronic repulsion integrals using the Schwarz inequality for the given threshold. This will be approximately the accuracy of the forces,  and should normally be similar to EPS_SCF</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-006</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_P_SCREEN_CORRECTION_FACTOR"></a><a href="#list_P_SCREEN_CORRECTION_FACTOR" id="P_SCREEN_CORRECTION_FACTOR">P_SCREEN_CORRECTION_FACTOR</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">P_SCREEN_CORRECTION_FACTOR</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Recalculates integrals on the fly if the actual density matrix is larger by a given factor than the initial one. If the factor is set to 0.0_dp, this feature is disabled.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SCREEN_ON_INITIAL_P"></a><a href="#list_SCREEN_ON_INITIAL_P" id="SCREEN_ON_INITIAL_P">SCREEN_ON_INITIAL_P</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SCREEN_ON_INITIAL_P</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Screen on an initial density matrix. For the first MD step this matrix must be provided by a Restart File.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SCREEN_P_FORCES"></a><a href="#list_SCREEN_P_FORCES" id="SCREEN_P_FORCES">SCREEN_P_FORCES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SCREEN_P_FORCES</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Screens the electronic repulsion integrals for the forces using the density matrix. This results in a significant speedup for large systems, but might require a somewhat tigher EPS_SCHWARZ_FORCES.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

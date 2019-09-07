@@ -1,0 +1,864 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / LS_SCF / PEXSI</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Specifies the parameters of the PEXSI library. The density matrix is calculated with PEXSI if PURIFICATION_METHOD (in LS_SCF section) is set to PEXSI. The computational cost of PEXSI is at most quadratically scaling w.r.t. the system size and PEXSI is applicable to insulating and metallic systems. The value of EPS_PGF_ORB (in QS input section) defines the sparsity of the matrices sent to PEXSI and EPS_FILTER is overwritten with 0.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/LS_SCF/PEXSI.html">Section PEXSI</a></h2>
+      <ul class="none">
+         <li><em>Specifies the parameters of the PEXSI library. The density matrix is calculated with PEXSI if PURIFICATION_METHOD (in LS_SCF section) is set to PEXSI. The computational cost of PEXSI is at most quadratically scaling w.r.t. the system size and PEXSI is applicable to insulating and metallic systems. The value of EPS_PGF_ORB (in QS input section) defines the sparsity of the matrices sent to PEXSI and EPS_FILTER is overwritten with 0.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../../DFT.html">DFT</a> /
+               <a href="../LS_SCF.html">LS_SCF</a> /
+               <a href="PEXSI.html">PEXSI</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../../references.html#reference_150">Lin2009</a>]
+            
+            [<a href="../../../../references.html#reference_151">Lin2013</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li>
+                  none
+                  </li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#CSR_SCREENING" id="list_CSR_SCREENING">CSR_SCREENING</a></li>
+               <li><a href="#GAP" id="list_GAP">GAP</a></li>
+               <li><a href="#IS_INERTIA_COUNT" id="list_IS_INERTIA_COUNT">IS_INERTIA_COUNT</a></li>
+               <li><a href="#MAX_PEXSI_ITER" id="list_MAX_PEXSI_ITER">MAX_PEXSI_ITER</a></li>
+               <li><a href="#MIN_RANKS_PER_POLE" id="list_MIN_RANKS_PER_POLE">MIN_RANKS_PER_POLE</a></li>
+               <li><a href="#MU_INERTIA_EXPANSION" id="list_MU_INERTIA_EXPANSION">MU_INERTIA_EXPANSION</a></li>
+               <li><a href="#MU_INERTIA_TOLERANCE" id="list_MU_INERTIA_TOLERANCE">MU_INERTIA_TOLERANCE</a></li>
+               <li><a href="#MU_MAX_0" id="list_MU_MAX_0">MU_MAX_0</a></li>
+               <li><a href="#MU_MIN_0" id="list_MU_MIN_0">MU_MIN_0</a></li>
+               <li><a href="#MU_PEXSI_SAFE_GUARD" id="list_MU_PEXSI_SAFE_GUARD">MU_PEXSI_SAFE_GUARD</a></li>
+               <li><a href="#NP_SYMB_FACT" id="list_NP_SYMB_FACT">NP_SYMB_FACT</a></li>
+               <li><a href="#NUM_ELECTRON_INITIAL_TOLERANCE" id="list_NUM_ELECTRON_INITIAL_TOLERANCE">NUM_ELECTRON_INITIAL_TOLERANCE</a></li>
+               <li><a href="#NUM_ELECTRON_PEXSI_TOLERANCE" id="list_NUM_ELECTRON_PEXSI_TOLERANCE">NUM_ELECTRON_PEXSI_TOLERANCE</a></li>
+               <li><a href="#NUM_POLE" id="list_NUM_POLE">NUM_POLE</a></li>
+               <li><a href="#ORDERING" id="list_ORDERING">ORDERING</a></li>
+               <li><a href="#ROW_ORDERING" id="list_ROW_ORDERING">ROW_ORDERING</a></li>
+               <li><a href="#TEMPERATURE" id="list_TEMPERATURE">TEMPERATURE</a></li>
+               <li><a href="#VERBOSITY" id="list_VERBOSITY">VERBOSITY</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CSR_SCREENING"></a><a href="#list_CSR_SCREENING" id="CSR_SCREENING">CSR_SCREENING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CSR_SCREENING</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Whether distance screening should be applied to improve sparsity of CSR matrices.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_GAP"></a><a href="#list_GAP" id="GAP">GAP</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">GAP</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Spectral gap. Note: This can be set to be 0 in most cases.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_IS_INERTIA_COUNT"></a><a href="#list_IS_INERTIA_COUNT" id="IS_INERTIA_COUNT">IS_INERTIA_COUNT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">IS_INERTIA_COUNT</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Whether inertia counting is used each time the DFT driver of PEXSI is invoked. If FALSE, inertia counting is still used in the first SCF iteration.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_PEXSI_ITER"></a><a href="#list_MAX_PEXSI_ITER" id="MAX_PEXSI_ITER">MAX_PEXSI_ITER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_PEXSI_ITER</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum number of PEXSI iterations after each inertia counting procedure.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">5</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MIN_RANKS_PER_POLE"></a><a href="#list_MIN_RANKS_PER_POLE" id="MIN_RANKS_PER_POLE">MIN_RANKS_PER_POLE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MIN_RANKS_PER_POLE</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The minimum number of processors used for each pole. The real number of processors per pole is the smallest number greater or equal to MIN_RANKS_PER_POLE that divides MPI size without remainder. For efficiency, MIN_RANKS_PER_POLE should be a small numbers (limited by the available memory).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">64</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MU_INERTIA_EXPANSION"></a><a href="#list_MU_INERTIA_EXPANSION" id="MU_INERTIA_EXPANSION">MU_INERTIA_EXPANSION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MU_INERTIA_EXPANSION</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If the chemical potential is not in the initial interval, the interval is expanded by MU_INERTIA_EXPANSION.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.50000000E-001</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MU_INERTIA_TOLERANCE"></a><a href="#list_MU_INERTIA_TOLERANCE" id="MU_INERTIA_TOLERANCE">MU_INERTIA_TOLERANCE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MU_INERTIA_TOLERANCE</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Stopping criterion in terms of the chemical potential for the inertia counting procedure.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-002</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MU_MAX_0"></a><a href="#list_MU_MAX_0" id="MU_MAX_0">MU_MAX_0</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MU_MAX_0</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Initial guess of upper bound for mu.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">5.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MU_MIN_0"></a><a href="#list_MU_MIN_0" id="MU_MIN_0">MU_MIN_0</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MU_MIN_0</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Initial guess of lower bound for mu.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-5.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MU_PEXSI_SAFE_GUARD"></a><a href="#list_MU_PEXSI_SAFE_GUARD" id="MU_PEXSI_SAFE_GUARD">MU_PEXSI_SAFE_GUARD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MU_PEXSI_SAFE_GUARD</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Safe guard criterion in terms of the chemical potential to reinvoke the inertia counting procedure.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-002</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../units.html">Default unit:</a><code>
+                        [hartree]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NP_SYMB_FACT"></a><a href="#list_NP_SYMB_FACT" id="NP_SYMB_FACT">NP_SYMB_FACT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NP_SYMB_FACT</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of processors for PARMETIS/PT-SCOTCH. Only used if ORDERING is set to PARALLEL. If 0, the number of processors for PARMETIS/PT-SCOTCH will be set equal to the number of MPI ranks per pole. Note: if more than one processor is used, a segmentation fault may occur in the symbolic factorization phase.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NUM_ELECTRON_INITIAL_TOLERANCE"></a><a href="#list_NUM_ELECTRON_INITIAL_TOLERANCE" id="NUM_ELECTRON_INITIAL_TOLERANCE">NUM_ELECTRON_INITIAL_TOLERANCE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NUM_ELECTRON_INITIAL_TOLERANCE</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The same as NUM_ELECTRON_PEXSI_TOLERANCE but applied in the first SCF steps. If set to a value smaller than NUM_ELECTRON_PEXSI_TOLERANCE, it is overwritten with NUM_ELECTRON_PEXSI_TOLERANCE (default). If set to a value larger than NUM_ELECTRON_PEXSI_TOLERANCE, the PEXSI tolerance in number of electrons is set adaptively according to the SCF convergence error of the previous SCF step. This reduces the number of PEXSI iterations in the first SCF steps but leads to at least one more SCF step.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NUM_ELECTRON_PEXSI_TOLERANCE"></a><a href="#list_NUM_ELECTRON_PEXSI_TOLERANCE" id="NUM_ELECTRON_PEXSI_TOLERANCE">NUM_ELECTRON_PEXSI_TOLERANCE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NUM_ELECTRON_PEXSI_TOLERANCE</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Stopping criterion of the PEXSI iteration in terms of The number of electrons compared to the exact number of electrons. This threshold is the target tolerance applied at convergence of SCF.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-001</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NUM_POLE"></a><a href="#list_NUM_POLE" id="NUM_POLE">NUM_POLE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NUM_POLE</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of terms in the pole expansion (should be even).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">64</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ORDERING"></a><a href="#list_ORDERING" id="ORDERING">ORDERING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ORDERING</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Ordering strategy for factorization and selected inversion.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">PARALLEL</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MULTIPLE_MINIMUM_DEGREE</code></dt>
+                              <dd><em>Multiple minimum degree ordering (MMD_AT_PLUS_A option in SuperLU_DIST)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">PARALLEL</code></dt>
+                              <dd><em>Parallel ordering using ParMETIS/PT-SCOTCH (PARMETIS option in SuperLU_DIST)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SEQUENTIAL</code></dt>
+                              <dd><em>Sequential ordering using METIS (METIS_AT_PLUS_A option in SuperLU_DIST)</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ROW_ORDERING"></a><a href="#list_ROW_ORDERING" id="ROW_ORDERING">ROW_ORDERING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ROW_ORDERING</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>row permutation strategy for factorization and selected inversion.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">NOROWPERM</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">LARGEDIAG</code></dt>
+                              <dd><em>Make diagonal entry larger than off diagonal (LargeDiag option in SuperLU_DIST)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NOROWPERM</code></dt>
+                              <dd><em>No row permutation (NOROWPERM option in SuperLU_DIST)</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TEMPERATURE"></a><a href="#list_TEMPERATURE" id="TEMPERATURE">TEMPERATURE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TEMPERATURE</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Electronic temperature</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">3.00000000E+002</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../units.html">Default unit:</a><code>
+                        [K]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_VERBOSITY"></a><a href="#list_VERBOSITY" id="VERBOSITY">VERBOSITY</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">VERBOSITY</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The level of output information.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">BASIC</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BASIC</code></dt>
+                              <dd><em>
+                                    Without description, yet.
+                                    </em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">DETAILED</code></dt>
+                              <dd><em>
+                                    Without description, yet.
+                                    </em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SILENT</code></dt>
+                              <dd><em>
+                                    Without description, yet.
+                                    </em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

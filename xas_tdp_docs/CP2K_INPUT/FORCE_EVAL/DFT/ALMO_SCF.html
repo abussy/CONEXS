@@ -1,0 +1,612 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / ALMO_SCF</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Settings for a class of efficient linear scaling methods based on absolutely localized orbitals (ALMOs). ALMO methods are currently restricted to closed-shell molecular systems.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/ALMO_SCF.html">Section ALMO_SCF</a></h2>
+      <ul class="none">
+         <li><em>Settings for a class of efficient linear scaling methods based on absolutely localized orbitals (ALMOs). ALMO methods are currently restricted to closed-shell molecular systems.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../DFT.html">DFT</a> /
+               <a href="ALMO_SCF.html">ALMO_SCF</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../references.html#reference_142">Khaliullin2013</a>]
+            
+            [<a href="../../../references.html#reference_194">Scheiber2018</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="ALMO_SCF/ALMO_OPTIMIZER_DIIS.html">ALMO_OPTIMIZER_DIIS</a></li>
+               <li><a href="ALMO_SCF/ALMO_OPTIMIZER_PCG.html">ALMO_OPTIMIZER_PCG</a></li>
+               <li><a href="ALMO_SCF/ANALYSIS.html">ANALYSIS</a></li>
+               <li><a href="ALMO_SCF/MATRIX_ITERATE.html">MATRIX_ITERATE</a></li>
+               <li><a href="ALMO_SCF/PENALTY.html">PENALTY</a></li>
+               <li><a href="ALMO_SCF/XALMO_OPTIMIZER_PCG.html">XALMO_OPTIMIZER_PCG</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#ALMO_ALGORITHM" id="list_ALMO_ALGORITHM">ALMO_ALGORITHM</a></li>
+               <li><a href="#ALMO_EXTRAPOLATION_ORDER" id="list_ALMO_EXTRAPOLATION_ORDER">ALMO_EXTRAPOLATION_ORDER</a></li>
+               <li><a href="#ALMO_SCF_GUESS" id="list_ALMO_SCF_GUESS">ALMO_SCF_GUESS</a></li>
+               <li><a href="#DELOCALIZE_METHOD" id="list_DELOCALIZE_METHOD">DELOCALIZE_METHOD</a></li>
+               <li><a href="#EPS_FILTER" id="list_EPS_FILTER">EPS_FILTER</a></li>
+               <li><a href="#MO_OVERLAP_INV_ALG" id="list_MO_OVERLAP_INV_ALG">MO_OVERLAP_INV_ALG</a></li>
+               <li><a href="#RETURN_ORTHOGONALIZED_MOS" id="list_RETURN_ORTHOGONALIZED_MOS">RETURN_ORTHOGONALIZED_MOS</a></li>
+               <li><a href="#XALMO_EXTRAPOLATION_ORDER" id="list_XALMO_EXTRAPOLATION_ORDER">XALMO_EXTRAPOLATION_ORDER</a></li>
+               <li><a href="#XALMO_R_CUTOFF_FACTOR" id="list_XALMO_R_CUTOFF_FACTOR">XALMO_R_CUTOFF_FACTOR</a></li>
+               <li><a href="#XALMO_TRIAL_WF" id="list_XALMO_TRIAL_WF">XALMO_TRIAL_WF</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ALMO_ALGORITHM"></a><a href="#list_ALMO_ALGORITHM" id="ALMO_ALGORITHM">ALMO_ALGORITHM</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ALMO_ALGORITHM</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the algorithm to update block-diagonal ALMOs during the SCF procedure.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">DIAG</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">DIAG</code></dt>
+                              <dd><em>DIIS-accelerated diagonalization controlled by ALMO_OPTIMIZER_DIIS. Recommended for large systems containing small fragments.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">PCG</code></dt>
+                              <dd><em>Energy minimization with a PCG algorithm controlled by ALMO_OPTIMIZER_PCG.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SKIP</code></dt>
+                              <dd><em>Skip optimization of block-diagonal ALMOs.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ALMO_EXTRAPOLATION_ORDER"></a><a href="#list_ALMO_EXTRAPOLATION_ORDER" id="ALMO_EXTRAPOLATION_ORDER">ALMO_EXTRAPOLATION_ORDER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ALMO_EXTRAPOLATION_ORDER</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of previous states used for the ASPC extrapolation of the ALMO initial guess. 0 implies that the guess is given by ALMO_SCF_GUESS at each step.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">3</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ALMO_SCF_GUESS"></a><a href="#list_ALMO_SCF_GUESS" id="ALMO_SCF_GUESS">ALMO_SCF_GUESS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ALMO_SCF_GUESS</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The method to generate initial ALMOs.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">ATOMIC</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ATOMIC</code></dt>
+                              <dd><em>Superposition of atomic densities.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MOLECULAR</code></dt>
+                              <dd><em>SCF calculations on single molecules controlled by the regular SCF keywords outside ALMO options. This kind of calculation is expensive and only recommended if ALMO SCF does not converge from the ATOMIC guess.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_DELOCALIZE_METHOD"></a><a href="#list_DELOCALIZE_METHOD" id="DELOCALIZE_METHOD">DELOCALIZE_METHOD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">DELOCALIZE_METHOD</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Methods to reintroduce electron delocalization, which is excluded with the block-diagonal ALMO reference. Electron delocalization can be computed using either fully delocalized MOs or spatially restricted ALMOs (called extended ALMOs or XALMOs). All methods below use a PCG optimizer controlled by XALMO_OPTIMIZER_PCG. The only exception is the non-iterative XALMO_1DIAG.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">XALMO_X</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FULL_SCF</code></dt>
+                              <dd><em>Self-consistent treatment of delocalization without spatial restrictions</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FULL_X</code></dt>
+                              <dd><em>Single excitation correction (no Hamiltonian re-build) without spatial restrictions</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FULL_X_THEN_SCF</code></dt>
+                              <dd><em>Single excitation correction followed by full SCF procedure, both without spatial restrictions</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NONE</code></dt>
+                              <dd><em>Neglect electron delocalization</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">XALMO_1DIAG</code></dt>
+                              <dd><em>Correction based on one diagonalization of the spatially projected Hamiltonian (XALMO)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">XALMO_SCF</code></dt>
+                              <dd><em>Self-consistent treatment of delocalization with spatial restrictions (XALMO)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">XALMO_X</code></dt>
+                              <dd><em>Single excitation correction (no Hamiltonian re-build) with spatial restrictions (XALMO)</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_FILTER"></a><a href="#list_EPS_FILTER" id="EPS_FILTER">EPS_FILTER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_FILTER</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Threshold for the matrix sparsity filter</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-007</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MO_OVERLAP_INV_ALG"></a><a href="#list_MO_OVERLAP_INV_ALG" id="MO_OVERLAP_INV_ALG">MO_OVERLAP_INV_ALG</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MO_OVERLAP_INV_ALG</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Algorithm to invert MO overlap matrix.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">LS_HOTELLING</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">DENSE_CHOLESKY</code></dt>
+                              <dd><em>Stable but dense Cholesky algorithm. Cubically scaling.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">LS_HOTELLING</code></dt>
+                              <dd><em>Linear scaling iterative Hotelling algorithm. Fast for large sparse matrices.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">LS_TAYLOR</code></dt>
+                              <dd><em>Linear scaling algorithm based on Taylor expansion of (A+B)^(-1).</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RETURN_ORTHOGONALIZED_MOS"></a><a href="#list_RETURN_ORTHOGONALIZED_MOS" id="RETURN_ORTHOGONALIZED_MOS">RETURN_ORTHOGONALIZED_MOS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RETURN_ORTHOGONALIZED_MOS</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Orthogonalize final ALMOs before they are returnedto Quickstep (i.e. for calculation of properties)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_XALMO_EXTRAPOLATION_ORDER"></a><a href="#list_XALMO_EXTRAPOLATION_ORDER" id="XALMO_EXTRAPOLATION_ORDER">XALMO_EXTRAPOLATION_ORDER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">XALMO_EXTRAPOLATION_ORDER</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of previous states used for the ASPC extrapolation of the initial guess for the delocalization correction.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_XALMO_R_CUTOFF_FACTOR"></a><a href="#list_XALMO_R_CUTOFF_FACTOR" id="XALMO_R_CUTOFF_FACTOR">XALMO_R_CUTOFF_FACTOR</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">XALMO_R_CUTOFF_FACTOR</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Controls the localization radius of XALMOs: R_cutoff = XALMO_R_CUTOFF_FACTOR*(radius(at1)+radius(at2))</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.50000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_XALMO_TRIAL_WF"></a><a href="#list_XALMO_TRIAL_WF" id="XALMO_TRIAL_WF">XALMO_TRIAL_WF</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">XALMO_TRIAL_WF</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Determines the form of the trial XALMOs.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">PROJECT_R0_OUT</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">PROJECT_R0_OUT</code></dt>
+                              <dd><em>Block-diagonal ALMOs plus the XALMO term projected onto the unoccupied ALMO-subspace.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SIMPLE</code></dt>
+                              <dd><em>Straightforward AO-basis expansion.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

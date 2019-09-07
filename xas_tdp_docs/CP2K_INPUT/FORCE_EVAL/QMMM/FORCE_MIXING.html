@@ -1,0 +1,560 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / QMMM / FORCE_MIXING</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="This section enables and defines parameters for force-mixing based QM/MM, which actually does two conventional QM/MM calculations, on a small  and a large QM region, and combines the MM forces from one and QM  forces from the other to create a complete set of forces.  Energy is  not conserved (although the QM/MM energy from the large QM region calculation is reported)  so a proper thermostat (i.e. massive, and able to handle dissipation, such as  Adaptive Langevin (AD_LANGEVIN)) must be used. For some propagation algorithms  (NVT and REFTRAJ MD ensembles) algorithm is adaptive,  including molecules hysteretically based on their instantaneous distance from the core region.  Information on core/QM/buffer labels can be written in PDB file using  MOTION&amp;PRINT&amp;FORCE_MIXING_LABELS.  Will fail if calculation requires a  meaningfull stress, or an energy that is consistent with the forces.  For GEO_OPT this means  only MOTION&amp;GEO_OPT&amp;TYPE CG, MOTION&amp;GEO_OPT&amp;CG&amp;LINE_SEARCH&amp;TYPE 2PNT, and  MOTION&amp;GEO_OPT&amp;CG&amp;LINE_SEARCH&amp;2PNT&amp;LINMIN_GRAD_ONLY T">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../index.html#CP2K_INPUT/FORCE_EVAL/QMMM/FORCE_MIXING.html">Section FORCE_MIXING</a></h2>
+      <ul class="none">
+         <li><em>This section enables and defines parameters for force-mixing based QM/MM, which actually does two conventional QM/MM calculations, on a small  and a large QM region, and combines the MM forces from one and QM  forces from the other to create a complete set of forces.  Energy is  not conserved (although the QM/MM energy from the large QM region calculation is reported)  so a proper thermostat (i.e. massive, and able to handle dissipation, such as  Adaptive Langevin (AD_LANGEVIN)) must be used. For some propagation algorithms  (NVT and REFTRAJ MD ensembles) algorithm is adaptive,  including molecules hysteretically based on their instantaneous distance from the core region.  Information on core/QM/buffer labels can be written in PDB file using  MOTION&PRINT&FORCE_MIXING_LABELS.  Will fail if calculation requires a  meaningfull stress, or an energy that is consistent with the forces.  For GEO_OPT this means  only MOTION&GEO_OPT&TYPE CG, MOTION&GEO_OPT&CG&LINE_SEARCH&TYPE 2PNT, and  MOTION&GEO_OPT&CG&LINE_SEARCH&2PNT&LINMIN_GRAD_ONLY T</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../QMMM.html">QMMM</a> /
+               <a href="FORCE_MIXING.html">FORCE_MIXING</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../references.html#reference_112">Bernstein2009</a>]
+            
+            [<a href="../../../references.html#reference_111">Bernstein2012</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="FORCE_MIXING/BUFFER_LINKS.html">BUFFER_LINKS</a></li>
+               <li><a href="FORCE_MIXING/BUFFER_NON_ADAPTIVE.html">BUFFER_NON_ADAPTIVE</a></li>
+               <li><a href="FORCE_MIXING/PRINT.html">PRINT</a></li>
+               <li><a href="FORCE_MIXING/QM_NON_ADAPTIVE.html">QM_NON_ADAPTIVE</a></li>
+               <li><a href="FORCE_MIXING/RESTART_INFO.html">RESTART_INFO</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#SECTION_PARAMETERS" id="list_SECTION_PARAMETERS">SECTION_PARAMETERS</a></li>
+            </ul>
+            <ul class="disc">
+               <li><a href="#ADAPTIVE_EXCLUDE_MOLECULES" id="list_ADAPTIVE_EXCLUDE_MOLECULES">ADAPTIVE_EXCLUDE_MOLECULES</a></li>
+               <li><a href="#EXTENDED_DELTA_CHARGE" id="list_EXTENDED_DELTA_CHARGE">EXTENDED_DELTA_CHARGE</a></li>
+               <li><a href="#MAX_N_QM" id="list_MAX_N_QM">MAX_N_QM</a></li>
+               <li><a href="#MOMENTUM_CONSERVATION_REGION" id="list_MOMENTUM_CONSERVATION_REGION">MOMENTUM_CONSERVATION_REGION</a></li>
+               <li><a href="#MOMENTUM_CONSERVATION_TYPE" id="list_MOMENTUM_CONSERVATION_TYPE">MOMENTUM_CONSERVATION_TYPE</a></li>
+               <li><a href="#QM_EXTENDED_SEED_IS_ONLY_CORE_LIST" id="list_QM_EXTENDED_SEED_IS_ONLY_CORE_LIST">QM_EXTENDED_SEED_IS_ONLY_CORE_LIST</a></li>
+               <li><a href="#QM_KIND_ELEMENT_MAPPING" id="list_QM_KIND_ELEMENT_MAPPING">QM_KIND_ELEMENT_MAPPING</a></li>
+               <li><a href="#R_BUF" id="list_R_BUF">R_BUF</a></li>
+               <li><a href="#R_CORE" id="list_R_CORE">R_CORE</a></li>
+               <li><a href="#R_QM" id="list_R_QM">R_QM</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SECTION_PARAMETERS"></a><a href="#list_SECTION_PARAMETERS" id="SECTION_PARAMETERS">SECTION_PARAMETERS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">&amp;FORCE_MIXING</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Enables force-mixing</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ADAPTIVE_EXCLUDE_MOLECULES"></a><a href="#list_ADAPTIVE_EXCLUDE_MOLECULES" id="ADAPTIVE_EXCLUDE_MOLECULES">ADAPTIVE_EXCLUDE_MOLECULES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ADAPTIVE_EXCLUDE_MOLECULES</code><code>&nbsp;{Word}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>List of molecule names to exclude from adaptive regions (e.g. big things like proteins)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of words.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EXTENDED_DELTA_CHARGE"></a><a href="#list_EXTENDED_DELTA_CHARGE" id="EXTENDED_DELTA_CHARGE">EXTENDED_DELTA_CHARGE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EXTENDED_DELTA_CHARGE</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Additional net charge in extended region relative to core (core charge is  specified in DFT section, as usual for a convetional QM/MM calculation)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_N_QM"></a><a href="#list_MAX_N_QM" id="MAX_N_QM">MAX_N_QM</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_N_QM</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum number of QM atoms, for detection of runaway adaptive selection.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">300</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MOMENTUM_CONSERVATION_REGION"></a><a href="#list_MOMENTUM_CONSERVATION_REGION" id="MOMENTUM_CONSERVATION_REGION">MOMENTUM_CONSERVATION_REGION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MOMENTUM_CONSERVATION_REGION</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Region to apply correction force to for momentum conservation</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">QM</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BUFFER</code></dt>
+                              <dd><em>Apply to QM+buffer regions</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">CORE</code></dt>
+                              <dd><em>Apply to QM core region</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">QM</code></dt>
+                              <dd><em>Apply to full QM (dynamics) region</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MOMENTUM_CONSERVATION_TYPE"></a><a href="#list_MOMENTUM_CONSERVATION_TYPE" id="MOMENTUM_CONSERVATION_TYPE">MOMENTUM_CONSERVATION_TYPE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MOMENTUM_CONSERVATION_TYPE</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>How to apply force to get momentum conservation</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">EQUAL_A</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">EQUAL_A</code></dt>
+                              <dd><em>Equal acceleration on each atom</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">EQUAL_F</code></dt>
+                              <dd><em>Equal force on each atom</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NONE</code></dt>
+                              <dd><em>No momentum conservation</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_QM_EXTENDED_SEED_IS_ONLY_CORE_LIST"></a><a href="#list_QM_EXTENDED_SEED_IS_ONLY_CORE_LIST" id="QM_EXTENDED_SEED_IS_ONLY_CORE_LIST">QM_EXTENDED_SEED_IS_ONLY_CORE_LIST</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">QM_EXTENDED_SEED_IS_ONLY_CORE_LIST</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Makes the extended QM zone be defined hysterestically  by distance from QM core list (i.e. atoms specified explicitly by  user) instead of from full QM core region (specified by user + hysteretic  selection + unbreakable bonds)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_QM_KIND_ELEMENT_MAPPING"></a><a href="#list_QM_KIND_ELEMENT_MAPPING" id="QM_KIND_ELEMENT_MAPPING">QM_KIND_ELEMENT_MAPPING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">QM_KIND_ELEMENT_MAPPING</code><code>&nbsp;{Word}</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Mapping from elements to QM_KINDs for adaptively included atoms.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword can be repeated
+                     and it expects
+                     
+                     precisely 2&nbsp;words.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_R_BUF"></a><a href="#list_R_BUF" id="R_BUF">R_BUF</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">R_BUF</code><code>&nbsp;{Real}</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the inner and outer radii of buffer region.  All atoms within this distance (hysteretically) of any QM atoms  will be buffer atoms in the force-mixing calculation.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely 2&nbsp;reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default values:
+                     <code class="upper">5.00000000E-001 1.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [angstrom]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_R_CORE"></a><a href="#list_R_CORE" id="R_CORE">R_CORE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">R_CORE</code><code>&nbsp;{Real}</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the inner and outer radii of core QM region.  All molecules with any atoms within this distance (hysteretically) of any atoms  specified as QM in enclosing QM/MM section  will be core QM atoms in the force-mixing calculation.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely 2&nbsp;reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default values:
+                     <code class="upper">0.00000000E+000 0.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [angstrom]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_R_QM"></a><a href="#list_R_QM" id="R_QM">R_QM</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">R_QM</code><code>&nbsp;{Real}</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the inner and outer radii of QM dynamics region.  All molecules with atoms within this distance (hysteretically) of any atoms in  core will follow QM dynamics in the force-mixing calculation.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely 2&nbsp;reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default values:
+                     <code class="upper">5.00000000E-001 1.00000000E+000</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../units.html">Default unit:</a><code>
+                        [angstrom]
+                        </code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

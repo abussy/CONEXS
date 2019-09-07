@@ -1,0 +1,749 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Supported HTML entities and tags</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="CP2K input reference">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2 align="center">List of HTML tags supported by CP2K</h2>
+      <p>The following HTML tags are supported by CP2K within the input descriptions:</p>
+      <ul class="disc">
+         <li>&lt;a&gt;</li>
+         <li>&lt;b&gt;</li>
+         <li>&lt;big&gt;</li>
+         <li>&lt;blockquote&gt;</li>
+         <li>&lt;br/&gt;</li>
+         <li>&lt;code&gt;</li>
+         <li>&lt;dd&gt;</li>
+         <li>&lt;del&gt;</li>
+         <li>&lt;div&gt;</li>
+         <li>&lt;dl&gt;</li>
+         <li>&lt;dt&gt;</li>
+         <li>&lt;em&gt;</li>
+         <li>&lt;h1&gt;</li>
+         <li>&lt;h2&gt;</li>
+         <li>&lt;h3&gt;</li>
+         <li>&lt;h4&gt;</li>
+         <li>&lt;h5&gt;</li>
+         <li>&lt;h6&gt;</li>
+         <li>&lt;hr&gt;</li>
+         <li>&lt;i&gt;</li>
+         <li>&lt;ins&gt;</li>
+         <li>&lt;li&gt;</li>
+         <li>&lt;ol&gt;</li>
+         <li>&lt;p&gt;</li>
+         <li>&lt;span&gt;</li>
+         <li>&lt;sub&gt;</li>
+         <li>&lt;sup&gt;</li>
+         <li>&lt;table&gt;</li>
+         <li>&lt;tbody&gt;</li>
+         <li>&lt;td&gt;</li>
+         <li>&lt;tfoot&gt;</li>
+         <li>&lt;th&gt;</li>
+         <li>&lt;thead&gt;</li>
+         <li>&lt;tr&gt;</li>
+         <li>&lt;tt&gt;</li>
+         <li>&lt;u&gt;</li>
+         <li>&lt;ul&gt;</li>
+         <li>&lt;pre&gt;</li>
+      </ul>
+      <h2 align="center">Table of HTML entities supported by CP2K</h2>
+      <p>The following HTML entities are supported by CP2K within the input descriptions:</p>
+      <table id="html_table">
+         <tr id="html_table">
+            <th id="html_table">Name</th>
+            <th id="html_table">Code</th>
+            <th id="html_table">Character</th>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;quot;</td>
+            <td id="html_table">&amp;#34;</td>
+            <td id="html_table">&#34;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;amp;</td>
+            <td id="html_table">&amp;#38;#38;</td>
+            <td id="html_table">&#38;#38;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;apos;</td>
+            <td id="html_table">&amp;#39;</td>
+            <td id="html_table">&#39;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;lt;</td>
+            <td id="html_table">&amp;#38;#60;</td>
+            <td id="html_table">&#38;#60;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;gt;</td>
+            <td id="html_table">&amp;#62;</td>
+            <td id="html_table">&#62;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;nbsp;</td>
+            <td id="html_table">&amp;#160;</td>
+            <td id="html_table">&#160;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;copy;</td>
+            <td id="html_table">&amp;#169;</td>
+            <td id="html_table">&#169;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;deg;</td>
+            <td id="html_table">&amp;#176;</td>
+            <td id="html_table">&#176;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;plusmn;</td>
+            <td id="html_table">&amp;#177;</td>
+            <td id="html_table">&#177;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sup2;</td>
+            <td id="html_table">&amp;#178;</td>
+            <td id="html_table">&#178;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sup3;</td>
+            <td id="html_table">&amp;#179;</td>
+            <td id="html_table">&#179;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;middot;</td>
+            <td id="html_table">&amp;#183;</td>
+            <td id="html_table">&#183;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sup1;</td>
+            <td id="html_table">&amp;#185;</td>
+            <td id="html_table">&#185;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Auml;</td>
+            <td id="html_table">&amp;#196;</td>
+            <td id="html_table">&#196;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Aring;</td>
+            <td id="html_table">&amp;#197;</td>
+            <td id="html_table">&#197;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Ccedil;</td>
+            <td id="html_table">&amp;#199;</td>
+            <td id="html_table">&#199;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Egrave;</td>
+            <td id="html_table">&amp;#200;</td>
+            <td id="html_table">&#200;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Eacute;</td>
+            <td id="html_table">&amp;#201;</td>
+            <td id="html_table">&#201;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Ecirc;</td>
+            <td id="html_table">&amp;#202;</td>
+            <td id="html_table">&#202;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Ograve;</td>
+            <td id="html_table">&amp;#210;</td>
+            <td id="html_table">&#210;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Oacute;</td>
+            <td id="html_table">&amp;#211;</td>
+            <td id="html_table">&#211;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Ocirc;</td>
+            <td id="html_table">&amp;#212;</td>
+            <td id="html_table">&#212;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Ouml;</td>
+            <td id="html_table">&amp;#214;</td>
+            <td id="html_table">&#214;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;times;</td>
+            <td id="html_table">&amp;#215;</td>
+            <td id="html_table">&#215;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Uuml;</td>
+            <td id="html_table">&amp;#220;</td>
+            <td id="html_table">&#220;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;agrave;</td>
+            <td id="html_table">&amp;#224;</td>
+            <td id="html_table">&#224;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;aacute;</td>
+            <td id="html_table">&amp;#225;</td>
+            <td id="html_table">&#225;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;acirc;</td>
+            <td id="html_table">&amp;#226;</td>
+            <td id="html_table">&#226;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;auml;</td>
+            <td id="html_table">&amp;#228;</td>
+            <td id="html_table">&#228;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;aring;</td>
+            <td id="html_table">&amp;#229;</td>
+            <td id="html_table">&#229;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ccedil;</td>
+            <td id="html_table">&amp;#231;</td>
+            <td id="html_table">&#231;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;egrave;</td>
+            <td id="html_table">&amp;#232;</td>
+            <td id="html_table">&#232;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;eacute;</td>
+            <td id="html_table">&amp;#233;</td>
+            <td id="html_table">&#233;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ecirc;</td>
+            <td id="html_table">&amp;#234;</td>
+            <td id="html_table">&#234;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ograve;</td>
+            <td id="html_table">&amp;#242;</td>
+            <td id="html_table">&#242;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;oacute;</td>
+            <td id="html_table">&amp;#243;</td>
+            <td id="html_table">&#243;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ocirc;</td>
+            <td id="html_table">&amp;#244;</td>
+            <td id="html_table">&#244;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ouml;</td>
+            <td id="html_table">&amp;#246;</td>
+            <td id="html_table">&#246;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ugrave;</td>
+            <td id="html_table">&amp;#249;</td>
+            <td id="html_table">&#249;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;uacute;</td>
+            <td id="html_table">&amp;#250;</td>
+            <td id="html_table">&#250;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ucirc;</td>
+            <td id="html_table">&amp;#251;</td>
+            <td id="html_table">&#251;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;uuml;</td>
+            <td id="html_table">&amp;#252;</td>
+            <td id="html_table">&#252;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Gamma;</td>
+            <td id="html_table">&amp;#915;</td>
+            <td id="html_table">&#915;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Delta;</td>
+            <td id="html_table">&amp;#916;</td>
+            <td id="html_table">&#916;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Theta;</td>
+            <td id="html_table">&amp;#920;</td>
+            <td id="html_table">&#920;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Lambda;</td>
+            <td id="html_table">&amp;#923;</td>
+            <td id="html_table">&#923;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Xi;</td>
+            <td id="html_table">&amp;#926;</td>
+            <td id="html_table">&#926;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Pi;</td>
+            <td id="html_table">&amp;#928;</td>
+            <td id="html_table">&#928;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Sigma;</td>
+            <td id="html_table">&amp;#931;</td>
+            <td id="html_table">&#931;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Phi;</td>
+            <td id="html_table">&amp;#934;</td>
+            <td id="html_table">&#934;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Psi;</td>
+            <td id="html_table">&amp;#936;</td>
+            <td id="html_table">&#936;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Omega;</td>
+            <td id="html_table">&amp;#937;</td>
+            <td id="html_table">&#937;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;alpha;</td>
+            <td id="html_table">&amp;#945;</td>
+            <td id="html_table">&#945;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;beta;</td>
+            <td id="html_table">&amp;#946;</td>
+            <td id="html_table">&#946;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;gamma;</td>
+            <td id="html_table">&amp;#947;</td>
+            <td id="html_table">&#947;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;delta;</td>
+            <td id="html_table">&amp;#948;</td>
+            <td id="html_table">&#948;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;epsilon;</td>
+            <td id="html_table">&amp;#949;</td>
+            <td id="html_table">&#949;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;zeta;</td>
+            <td id="html_table">&amp;#950;</td>
+            <td id="html_table">&#950;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;eta;</td>
+            <td id="html_table">&amp;#951;</td>
+            <td id="html_table">&#951;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;theta;</td>
+            <td id="html_table">&amp;#952;</td>
+            <td id="html_table">&#952;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;iota;</td>
+            <td id="html_table">&amp;#953;</td>
+            <td id="html_table">&#953;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;kappa;</td>
+            <td id="html_table">&amp;#954;</td>
+            <td id="html_table">&#954;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;lambda;</td>
+            <td id="html_table">&amp;#955;</td>
+            <td id="html_table">&#955;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;mu;</td>
+            <td id="html_table">&amp;#956;</td>
+            <td id="html_table">&#956;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;nu;</td>
+            <td id="html_table">&amp;#957;</td>
+            <td id="html_table">&#957;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;xi;</td>
+            <td id="html_table">&amp;#958;</td>
+            <td id="html_table">&#958;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;omicron;</td>
+            <td id="html_table">&amp;#959;</td>
+            <td id="html_table">&#959;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;pi;</td>
+            <td id="html_table">&amp;#960;</td>
+            <td id="html_table">&#960;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;rho;</td>
+            <td id="html_table">&amp;#961;</td>
+            <td id="html_table">&#961;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sigmaf;</td>
+            <td id="html_table">&amp;#962;</td>
+            <td id="html_table">&#962;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sigma;</td>
+            <td id="html_table">&amp;#963;</td>
+            <td id="html_table">&#963;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;tau;</td>
+            <td id="html_table">&amp;#964;</td>
+            <td id="html_table">&#964;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;upsilon;</td>
+            <td id="html_table">&amp;#965;</td>
+            <td id="html_table">&#965;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;phi;</td>
+            <td id="html_table">&amp;#966;</td>
+            <td id="html_table">&#966;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;chi;</td>
+            <td id="html_table">&amp;#967;</td>
+            <td id="html_table">&#967;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;psi;</td>
+            <td id="html_table">&amp;#968;</td>
+            <td id="html_table">&#968;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;omega;</td>
+            <td id="html_table">&amp;#969;</td>
+            <td id="html_table">&#969;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;thetasym;</td>
+            <td id="html_table">&amp;#977;</td>
+            <td id="html_table">&#977;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ndash;</td>
+            <td id="html_table">&amp;#8211;</td>
+            <td id="html_table">&#8211;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;mdash;</td>
+            <td id="html_table">&amp;#8212;</td>
+            <td id="html_table">&#8212;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;dagger;</td>
+            <td id="html_table">&amp;#8224;</td>
+            <td id="html_table">&#8224;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;Dagger;</td>
+            <td id="html_table">&amp;#8225;</td>
+            <td id="html_table">&#8225;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;bull;</td>
+            <td id="html_table">&amp;#8230;</td>
+            <td id="html_table">&#8230;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;hellip;</td>
+            <td id="html_table">&amp;#8230;</td>
+            <td id="html_table">&#8230;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;permil;</td>
+            <td id="html_table">&amp;#8240;</td>
+            <td id="html_table">&#8240;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;larr;</td>
+            <td id="html_table">&amp;#8592;</td>
+            <td id="html_table">&#8592;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;uarr;</td>
+            <td id="html_table">&amp;#8593;</td>
+            <td id="html_table">&#8593;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;rarr;</td>
+            <td id="html_table">&amp;#8594;</td>
+            <td id="html_table">&#8594;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;darr;</td>
+            <td id="html_table">&amp;#8595;</td>
+            <td id="html_table">&#8595;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;harr;</td>
+            <td id="html_table">&amp;#8596;</td>
+            <td id="html_table">&#8596;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;lArr;</td>
+            <td id="html_table">&amp;#8656;</td>
+            <td id="html_table">&#8656;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;uArr;</td>
+            <td id="html_table">&amp;#8657;</td>
+            <td id="html_table">&#8657;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;rArr;</td>
+            <td id="html_table">&amp;#8658;</td>
+            <td id="html_table">&#8658;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;dArr;</td>
+            <td id="html_table">&amp;#8659;</td>
+            <td id="html_table">&#8659;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;hArr;</td>
+            <td id="html_table">&amp;#8660;</td>
+            <td id="html_table">&#8660;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;forall;</td>
+            <td id="html_table">&amp;#8704;</td>
+            <td id="html_table">&#8704;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;part;</td>
+            <td id="html_table">&amp;#8706;</td>
+            <td id="html_table">&#8706;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;nabla;</td>
+            <td id="html_table">&amp;#8711;</td>
+            <td id="html_table">&#8711;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;isin;</td>
+            <td id="html_table">&amp;#8712;</td>
+            <td id="html_table">&#8712;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;notin;</td>
+            <td id="html_table">&amp;#8713;</td>
+            <td id="html_table">&#8713;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ni;</td>
+            <td id="html_table">&amp;#8715;</td>
+            <td id="html_table">&#8715;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;prop;</td>
+            <td id="html_table">&amp;#8733;</td>
+            <td id="html_table">&#8733;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;infin;</td>
+            <td id="html_table">&amp;#8734;</td>
+            <td id="html_table">&#8734;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ang;</td>
+            <td id="html_table">&amp;#8736;</td>
+            <td id="html_table">&#8736;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;and;</td>
+            <td id="html_table">&amp;#8743;</td>
+            <td id="html_table">&#8743;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;or;</td>
+            <td id="html_table">&amp;#8744;</td>
+            <td id="html_table">&#8744;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;cap;</td>
+            <td id="html_table">&amp;#8745;</td>
+            <td id="html_table">&#8745;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;cup;</td>
+            <td id="html_table">&amp;#8746;</td>
+            <td id="html_table">&#8746;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sim;</td>
+            <td id="html_table">&amp;#8764;</td>
+            <td id="html_table">&#8764;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;cong;</td>
+            <td id="html_table">&amp;#8773;</td>
+            <td id="html_table">&#8773;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;asymp;</td>
+            <td id="html_table">&amp;#8776;</td>
+            <td id="html_table">&#8776;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ne;</td>
+            <td id="html_table">&amp;#8800;</td>
+            <td id="html_table">&#8800;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;equiv;</td>
+            <td id="html_table">&amp;#8801;</td>
+            <td id="html_table">&#8801;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;le;</td>
+            <td id="html_table">&amp;#8804;</td>
+            <td id="html_table">&#8804;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;ge;</td>
+            <td id="html_table">&amp;#8805;</td>
+            <td id="html_table">&#8805;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sub;</td>
+            <td id="html_table">&amp;#8834;</td>
+            <td id="html_table">&#8834;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sup;</td>
+            <td id="html_table">&amp;#8835;</td>
+            <td id="html_table">&#8835;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;nsub;</td>
+            <td id="html_table">&amp;#8836;</td>
+            <td id="html_table">&#8836;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sube;</td>
+            <td id="html_table">&amp;#8838;</td>
+            <td id="html_table">&#8838;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;supe;</td>
+            <td id="html_table">&amp;#8839;</td>
+            <td id="html_table">&#8839;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;oplus;</td>
+            <td id="html_table">&amp;#8853;</td>
+            <td id="html_table">&#8853;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;otimes;</td>
+            <td id="html_table">&amp;#8855;</td>
+            <td id="html_table">&#8855;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;perp;</td>
+            <td id="html_table">&amp;#8869;</td>
+            <td id="html_table">&#8869;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;sdot;</td>
+            <td id="html_table">&amp;#8901;</td>
+            <td id="html_table">&#8901;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;lang;</td>
+            <td id="html_table">&amp;#9001;</td>
+            <td id="html_table">&#9001;</td>
+         </tr>
+         <tr id="html_table">
+            <td id="html_table">&amp;rang;</td>
+            <td id="html_table">&amp;#9002;</td>
+            <td id="html_table">&#9002;</td>
+         </tr>
+      </table>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

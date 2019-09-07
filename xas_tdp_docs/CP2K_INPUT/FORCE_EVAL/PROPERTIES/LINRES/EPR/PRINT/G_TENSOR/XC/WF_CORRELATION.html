@@ -1,0 +1,700 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / PROPERTIES / LINRES / EPR / PRINT / G_TENSOR / XC / WF_CORRELATION</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Sets up the Wavefunction-based Correlation parameters if requested">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../../../../../index.html#CP2K_INPUT/FORCE_EVAL/PROPERTIES/LINRES/EPR/PRINT/G_TENSOR/XC/WF_CORRELATION.html">Section WF_CORRELATION</a></h2>
+      <ul class="none">
+         <li><em>Sets up the Wavefunction-based Correlation parameters if requested</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../../../../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../../../../../../PROPERTIES.html">PROPERTIES</a> /
+               <a href="../../../../../LINRES.html">LINRES</a> /
+               <a href="../../../../EPR.html">EPR</a> /
+               <a href="../../../PRINT.html">PRINT</a> /
+               <a href="../../G_TENSOR.html">G_TENSOR</a> /
+               <a href="../XC.html">XC</a> /
+               <a href="WF_CORRELATION.html">WF_CORRELATION</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section can be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../../../../../../references.html#reference_122">DelBen2012</a>]
+            
+            [<a href="../../../../../../../../references.html#reference_125">DelBen2013</a>]
+            
+            [<a href="../../../../../../../../references.html#reference_152">DelBen2015</a>]
+            
+            [<a href="../../../../../../../../references.html#reference_158">DelBen2015b</a>]
+            
+            [<a href="../../../../../../../../references.html#reference_173">Rybkin2016</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="WF_CORRELATION/CPHF.html">CPHF</a></li>
+               <li><a href="WF_CORRELATION/DIRECT_CANONICAL.html">DIRECT_CANONICAL</a></li>
+               <li><a href="WF_CORRELATION/ERI_MME.html">ERI_MME</a></li>
+               <li><a href="WF_CORRELATION/IM_TIME.html">IM_TIME</a></li>
+               <li><a href="WF_CORRELATION/INTERACTION_POTENTIAL.html">INTERACTION_POTENTIAL</a></li>
+               <li><a href="WF_CORRELATION/MP2_INFO.html">MP2_INFO</a></li>
+               <li><a href="WF_CORRELATION/OPT_RI_BASIS.html">OPT_RI_BASIS</a></li>
+               <li><a href="WF_CORRELATION/RI_LAPLACE.html">RI_LAPLACE</a></li>
+               <li><a href="WF_CORRELATION/RI_MP2.html">RI_MP2</a></li>
+               <li><a href="WF_CORRELATION/RI_RPA.html">RI_RPA</a></li>
+               <li><a href="WF_CORRELATION/WFC_GPW.html">WFC_GPW</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#CALC_COND_NUM" id="list_CALC_COND_NUM">CALC_COND_NUM</a></li>
+               <li><a href="#COL_BLOCK" id="list_COL_BLOCK">COL_BLOCK</a></li>
+               <li><a href="#ERI_BLKSIZE" id="list_ERI_BLKSIZE">ERI_BLKSIZE</a></li>
+               <li><a href="#ERI_METHOD" id="list_ERI_METHOD">ERI_METHOD</a></li>
+               <li><a href="#GROUP_SIZE" id="list_GROUP_SIZE">GROUP_SIZE</a></li>
+               <li><a href="#IM_TIME" id="list_IM_TIME">IM_TIME</a></li>
+               <li><a href="#MEMORY" id="list_MEMORY">MEMORY</a></li>
+               <li><a href="#METHOD" id="list_METHOD">METHOD</a></li>
+               <li><a href="#RI_METRIC" id="list_RI_METRIC">RI_METRIC</a></li>
+               <li><a href="#ROW_BLOCK" id="list_ROW_BLOCK">ROW_BLOCK</a></li>
+               <li><a href="#SCALE_S" id="list_SCALE_S">SCALE_S</a></li>
+               <li><a href="#SCALE_T" id="list_SCALE_T">SCALE_T</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CALC_COND_NUM"></a><a href="#list_CALC_COND_NUM" id="CALC_COND_NUM">CALC_COND_NUM</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CALC_COND_NUM</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Calculate the condition number of the (P|Q) matrix for the RI methods.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     CALC_CONDITION_NUMBER</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_COL_BLOCK"></a><a href="#list_COL_BLOCK" id="COL_BLOCK">COL_BLOCK</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">COL_BLOCK</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Size of the column block used in the SCALAPACK block cyclic data distribution.Default is (COL_BLOCK=-1) is automatic. A proper choice can speedup the parallel matrix multiplication in the case of RI-RPA and RI-SOS-MP2-Laplace.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     COL_BLOCK_SIZE</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ERI_BLKSIZE"></a><a href="#list_ERI_BLKSIZE" id="ERI_BLKSIZE">ERI_BLKSIZE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ERI_BLKSIZE</code><code>&nbsp;{Integer}</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>block sizes for tensors (only used if ERI_METHOD=MME). First value is the block size for ORB basis, second value is the block size for RI_AUX basis.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely 2&nbsp;integers.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default values:
+                     <code class="upper">4 16</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ERI_METHOD"></a><a href="#list_ERI_METHOD" id="ERI_METHOD">ERI_METHOD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ERI_METHOD</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Method for calculating periodic electron repulsion integrals (MME method is faster but experimental, forces not yet implemented).Obara-Saika (OS) for the Coulomb operator can only be used for non-periodic calculations.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">GPW</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">GPW</code></dt>
+                              <dd><em>Uses Gaussian Plane Wave method [DelBen2013].</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MME</code></dt>
+                              <dd><em>Uses MiniMax-Ewald method (experimental, ERI_MME subsection, only for fully periodic systems with orthorhombic cells).</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">OS</code></dt>
+                              <dd><em>Uses Obara-Saika method (only for two-center integrals, only for gas phaseand only for cubic-scaling RPA and GW).</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_GROUP_SIZE"></a><a href="#list_GROUP_SIZE" id="GROUP_SIZE">GROUP_SIZE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">GROUP_SIZE</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Group size used in the computation of the integrals. To use all processors set GROUP_SIZE -1 (might lead to VERY high computation times).A smaller group size (for example the node size), might a better choice if the actual MP2 time is large compared to integral computation time. This is usually the case if the total number of processors is not too large.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     NUMBER_PROC</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_IM_TIME"></a><a href="#list_IM_TIME" id="IM_TIME">IM_TIME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">IM_TIME</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Turns on cubic scaling RI-RPA, GW and Laplace-SOS-MP2 method using the imaginary time formalism. If no IM_TIME section is present, the default parameters are used.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     IMAG_TIME</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MEMORY"></a><a href="#list_MEMORY" id="MEMORY">MEMORY</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MEMORY</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum allowed total memory usage during MP2 methods [MiB].</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.02400000E+003</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_METHOD"></a><a href="#list_METHOD" id="METHOD">METHOD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">METHOD</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Which method should be used to compute the MP2 energy</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">DIRECT_CANONICAL</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">DIRECT_CANONICAL</code></dt>
+                              <dd><em>Use the direct mp2 canonical approach</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MP2_GPW</code></dt>
+                              <dd><em>Use the GPW approach to MP2</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NONE</code></dt>
+                              <dd><em>Skip MP2 calculation</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">OPTIMIZE_RI_BASIS</code></dt>
+                              <dd><em>Optimize RIMP2 basis set</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">RI_MP2_GPW</code></dt>
+                              <dd><em>Use the GPW approach to RI-MP2</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">RI_RPA_GPW</code></dt>
+                              <dd><em>Use the GPW approach to RI-RPA</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">RI_SOS_LAPLACE</code></dt>
+                              <dd><em>Use the GPW approach to RI-SOS-Laplace-MP2</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following references:
+                     
+                     [<a href="../../../../../../../../references.html#reference_122">DelBen2012</a>]
+                     
+                     [<a href="../../../../../../../../references.html#reference_125">DelBen2013</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RI_METRIC"></a><a href="#list_RI_METRIC" id="RI_METRIC">RI_METRIC</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RI_METRIC</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Define which RI metric should be used for calculating B^P_ia.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">COULOMB</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">COULOMB</code></dt>
+                              <dd><em>Use Coulomb metric.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">OVERLAP</code></dt>
+                              <dd><em>Use overlap metric, recommended in combination with imaginary time for O(N^3) RPA.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     RI</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ROW_BLOCK"></a><a href="#list_ROW_BLOCK" id="ROW_BLOCK">ROW_BLOCK</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ROW_BLOCK</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Size of the row block used in the SCALAPACK block cyclic data distribution.Default is (ROW_BLOCK=-1) is automatic. A proper choice can speedup the parallel matrix multiplication in the case of RI-RPA and RI-SOS-MP2-Laplace.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     ROW_BLOCK_SIZE</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SCALE_S"></a><a href="#list_SCALE_S" id="SCALE_S">SCALE_S</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SCALE_S</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Scaling factor of the singlet energy component (opposite spin, OS).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SCALE_T"></a><a href="#list_SCALE_T" id="SCALE_T">SCALE_T</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SCALE_T</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Scaling factor of the triplet energy component (same spin, SS).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E+000</code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

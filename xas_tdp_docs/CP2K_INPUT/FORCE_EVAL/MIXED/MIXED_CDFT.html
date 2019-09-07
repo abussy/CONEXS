@@ -1,0 +1,803 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / MIXED / MIXED_CDFT</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Calculate properties involving multiple constrained states. Each repetition of the FORCE_EVAL section defines a new CDFT state that is included in the simulation. The DFT&amp;QS&amp;CDFT section must be active in each FORCE_EVAL and it must be consistently defined. When the keyword MIXED&amp;NGROUPS is set to a value 2 or larger, the CDFT states are solved in parallel, whereas when it is set to 1, the states are solved in serial. During MD, the system can be translated using only two of the CDFT states, which are selected with the keyword FORCE_STATES. The forces are determined by the linear combination F= lambda F1 + (1-lambda) F2.">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../index.html#CP2K_INPUT/FORCE_EVAL/MIXED/MIXED_CDFT.html">Section MIXED_CDFT</a></h2>
+      <ul class="none">
+         <li><em>Calculate properties involving multiple constrained states. Each repetition of the FORCE_EVAL section defines a new CDFT state that is included in the simulation. The DFT&QS&CDFT section must be active in each FORCE_EVAL and it must be consistently defined. When the keyword MIXED&NGROUPS is set to a value 2 or larger, the CDFT states are solved in parallel, whereas when it is set to 1, the states are solved in serial. During MD, the system can be translated using only two of the CDFT states, which are selected with the keyword FORCE_STATES. The forces are determined by the linear combination F= lambda F1 + (1-lambda) F2.</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../MIXED.html">MIXED</a> /
+               <a href="MIXED_CDFT.html">MIXED_CDFT</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../references.html#reference_183">Holmberg2017</a>]
+            
+            [<a href="../../../references.html#reference_196">Holmberg2018</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="MIXED_CDFT/BLOCK_DIAGONALIZE.html">BLOCK_DIAGONALIZE</a></li>
+               <li><a href="MIXED_CDFT/PRINT.html">PRINT</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#BLOCK_DIAGONALIZE" id="list_BLOCK_DIAGONALIZE">BLOCK_DIAGONALIZE</a></li>
+               <li><a href="#CI" id="list_CI">CI</a></li>
+               <li><a href="#COUPLING" id="list_COUPLING">COUPLING</a></li>
+               <li><a href="#DLB" id="list_DLB">DLB</a></li>
+               <li><a href="#EPS_OCCUPIED" id="list_EPS_OCCUPIED">EPS_OCCUPIED</a></li>
+               <li><a href="#EPS_SVD" id="list_EPS_SVD">EPS_SVD</a></li>
+               <li><a href="#FORCE_STATES" id="list_FORCE_STATES">FORCE_STATES</a></li>
+               <li><a href="#LAMBDA" id="list_LAMBDA">LAMBDA</a></li>
+               <li><a href="#LOAD_SCALE" id="list_LOAD_SCALE">LOAD_SCALE</a></li>
+               <li><a href="#LOWDIN" id="list_LOWDIN">LOWDIN</a></li>
+               <li><a href="#METRIC" id="list_METRIC">METRIC</a></li>
+               <li><a href="#MORE_WORK" id="list_MORE_WORK">MORE_WORK</a></li>
+               <li><a href="#NONORTHOGONAL_COUPLING" id="list_NONORTHOGONAL_COUPLING">NONORTHOGONAL_COUPLING</a></li>
+               <li><a href="#PARALLEL_BUILD" id="list_PARALLEL_BUILD">PARALLEL_BUILD</a></li>
+               <li><a href="#SCALE_WITH_OCCUPATION_NUMBERS" id="list_SCALE_WITH_OCCUPATION_NUMBERS">SCALE_WITH_OCCUPATION_NUMBERS</a></li>
+               <li><a href="#VERY_OVERLOADED" id="list_VERY_OVERLOADED">VERY_OVERLOADED</a></li>
+               <li><a href="#WFN_OVERLAP" id="list_WFN_OVERLAP">WFN_OVERLAP</a></li>
+               <li><a href="#WFN_RESTART_FILE_NAME" id="list_WFN_RESTART_FILE_NAME">WFN_RESTART_FILE_NAME</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_BLOCK_DIAGONALIZE"></a><a href="#list_BLOCK_DIAGONALIZE" id="BLOCK_DIAGONALIZE">BLOCK_DIAGONALIZE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">BLOCK_DIAGONALIZE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Block diagonalize the CDFT Hamiltonian. Control settings should be given in section &BLOCK_DIAGONALIZE. All requested electronic couplings are printed out after block diagonalization. When CDFT-CI and block diagonalization are both requested, the CI calculation is performed using the block diagonalized Hamiltonian.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CI"></a><a href="#list_CI" id="CI">CI</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CI</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Perform a CDFT configuration interaction calculation (CDFT-CI). The CI vector is expanded in the basis of the CDFT states. Diagonalizes the nonorthogonal diabatic CDFT Hamiltonian. The energies and expansion coefficients of the CDFT-CI states are outputted. Keyword COUPLING must be active to use this feature.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     CONFIGURATION_INTERACTION</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_COUPLING"></a><a href="#list_COUPLING" id="COUPLING">COUPLING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">COUPLING</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Parameter determining how often the CDFT electronic coupling element is calculated. Use a negative number to disable and 0 means every step. By default, the coupling is calculated by rotating the CDFT states to eigenstates of the weight function matrix when a single constraint is active and the constraint definitions are identical in both CDFT states. Otherwise uses Lowdin orthogonalization. For more than two CDFT states, the couplings are not computed pairwise and the values might deviate from values computed separately for each unique CDFT state pair.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_DLB"></a><a href="#list_DLB" id="DLB">DLB</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">DLB</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Controls the activation of dynamic load balancing during a mixed CDFT calculation. Requires Gaussian cavity confinement. Works only in conjunction with keyword PARALLEL_BUILD.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_OCCUPIED"></a><a href="#list_EPS_OCCUPIED" id="EPS_OCCUPIED">EPS_OCCUPIED</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_OCCUPIED</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Threshold for determining which molecular orbitals are considered occupied when fractional and/or empty orbitals are employed. Can and usually should be less than the threshold EPS_FERMI_DIRAC defined in section SCF&SMEAR. Note that the number occupied MOs should be constant in each CDFT state, since the CDFT coupling is only defined between states in the same spin state. Fractionally occupied MOs might exhibit linear dependencies and a singular value decomposition (EPS_SVD) can be used for removing these.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1.00000000E-006</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_SVD"></a><a href="#list_EPS_SVD" id="EPS_SVD">EPS_SVD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_SVD</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Determines the matrix inversion solver needed to compute the coupling. Default value implies LU decomposition, while values between 0.0 and 1.0 imply SVD decomposition. For SVD, the value acts as a threshold for screening singular values so that only values above it are included in the matrix pseudoinverse.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FORCE_STATES"></a><a href="#list_FORCE_STATES" id="FORCE_STATES">FORCE_STATES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FORCE_STATES</code><code>&nbsp;{Integer}</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Defines the CDFT states used to translate the system.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely 2&nbsp;integers.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default values:
+                     <code class="upper">1 2</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LAMBDA"></a><a href="#list_LAMBDA" id="LAMBDA">LAMBDA</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LAMBDA</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specify the mixing parameter lambda in the formula.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LOAD_SCALE"></a><a href="#list_LOAD_SCALE" id="LOAD_SCALE">LOAD_SCALE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LOAD_SCALE</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Control parameter for dynamic load balancing during a mixed CDFT calculation. See code for details. Works only in conjunction with keyword PARALLEL_BUILD.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_LOWDIN"></a><a href="#list_LOWDIN" id="LOWDIN">LOWDIN</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">LOWDIN</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Compute the CDFT electronic coupling element using Lowdin orthogonalization. This is the default behavior with multiple constraints and nonidentical constraints. By activating this keyword, this method is also used to compute the coupling when a single constraint is active in addition to the standard method.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_METRIC"></a><a href="#list_METRIC" id="METRIC">METRIC</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">METRIC</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Compute reliability metric for the CDFT electronic coupling element by diagonalizing the difference density matrix.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     COUPLING_METRIC</td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../../../references.html#reference_181">Mavros2015</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MORE_WORK"></a><a href="#list_MORE_WORK" id="MORE_WORK">MORE_WORK</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MORE_WORK</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Control parameter for dynamic load balancing during a mixed CDFT calculation. See code for details. Works only in conjunction with keyword PARALLEL_BUILD.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NONORTHOGONAL_COUPLING"></a><a href="#list_NONORTHOGONAL_COUPLING" id="NONORTHOGONAL_COUPLING">NONORTHOGONAL_COUPLING</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NONORTHOGONAL_COUPLING</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Print out the nonorthogonal diabatic CDFT coupling between states, as it appears in the mixed CDFT Hamiltonian before orthogonalization (coupling calculations) and CDFT-CI. Useful for (re)constructing the Hamiltonian for additional analysis. This is the CDFT interaction energy between states.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     NONORTHO_COUPLING</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PARALLEL_BUILD"></a><a href="#list_PARALLEL_BUILD" id="PARALLEL_BUILD">PARALLEL_BUILD</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PARALLEL_BUILD</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Build CDFT weight function and gradients in parallel on all N MPI processors before starting the CDFT SCF calculations of the 2 involved CDFT states in parallel on N/2 processors. Supports only Becke constraints that are identical in both states. Limited to 1 charge constraint per state (different target values). The keyword MIXED&NGROUPS must be set to 2.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SCALE_WITH_OCCUPATION_NUMBERS"></a><a href="#list_SCALE_WITH_OCCUPATION_NUMBERS" id="SCALE_WITH_OCCUPATION_NUMBERS">SCALE_WITH_OCCUPATION_NUMBERS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SCALE_WITH_OCCUPATION_NUMBERS</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Scale molecular orbitals with occupation numbers before calculating the electronic coupling. Affects only simulations which employ MO smearing. Disabling this keyword in conjunction with a properly selected EPS_OCCUPIED threshold might be useful in systems with a large number of fractionally occupied orbitals.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_VERY_OVERLOADED"></a><a href="#list_VERY_OVERLOADED" id="VERY_OVERLOADED">VERY_OVERLOADED</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">VERY_OVERLOADED</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Control parameter for dynamic load balancing during a mixed CDFT calculation. See code for details. Works only in conjunction with keyword PARALLEL_BUILD.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_WFN_OVERLAP"></a><a href="#list_WFN_OVERLAP" id="WFN_OVERLAP">WFN_OVERLAP</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">WFN_OVERLAP</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Compute the CDFT electronic coupling element using the wavefunction overlap method in addition to the standard method defined by the keyword COUPLING. In this method, the unconstrained KS ground state wavefunction (WFN_RESTART_FILE_NAME) is represented as a linear combination of the CDFT states. For more than two CDFT states, the coupling is computed pairwise for every state pair (contrary to other coupling methods).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../../../references.html#reference_180">Migliore2009</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_WFN_RESTART_FILE_NAME"></a><a href="#list_WFN_RESTART_FILE_NAME" id="WFN_RESTART_FILE_NAME">WFN_RESTART_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">WFN_RESTART_FILE_NAME</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the wavefunction restart file that defines the unconstrained KS ground state, which is used to compute the electronic coupling with the wavefunction overlap method. May include a path.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

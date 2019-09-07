@@ -1,0 +1,1123 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / KG_METHOD / ENERGY_CORRECTION / XC / WF_CORRELATION / RI_RPA / RI_G0W0</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Parameters influencing the RI-G0W0 method">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../../../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/KG_METHOD/ENERGY_CORRECTION/XC/WF_CORRELATION/RI_RPA/RI_G0W0.html">Section RI_G0W0</a></h2>
+      <ul class="none">
+         <li><em>Parameters influencing the RI-G0W0 method</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../../../../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../../../../../../DFT.html">DFT</a> /
+               <a href="../../../../../KG_METHOD.html">KG_METHOD</a> /
+               <a href="../../../../ENERGY_CORRECTION.html">ENERGY_CORRECTION</a> /
+               <a href="../../../XC.html">XC</a> /
+               <a href="../../WF_CORRELATION.html">WF_CORRELATION</a> /
+               <a href="../RI_RPA.html">RI_RPA</a> /
+               <a href="RI_G0W0.html">RI_G0W0</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="RI_G0W0/BSE.html">BSE</a></li>
+               <li><a href="RI_G0W0/IC.html">IC</a></li>
+               <li><a href="RI_G0W0/PERIODIC.html">PERIODIC</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#ANALYTIC_CONTINUATION" id="list_ANALYTIC_CONTINUATION">ANALYTIC_CONTINUATION</a></li>
+               <li><a href="#BSE" id="list_BSE">BSE</a></li>
+               <li><a href="#CHECK_FIT" id="list_CHECK_FIT">CHECK_FIT</a></li>
+               <li><a href="#CORR_MOS_OCC" id="list_CORR_MOS_OCC">CORR_MOS_OCC</a></li>
+               <li><a href="#CORR_MOS_VIRT" id="list_CORR_MOS_VIRT">CORR_MOS_VIRT</a></li>
+               <li><a href="#CROSSING_SEARCH" id="list_CROSSING_SEARCH">CROSSING_SEARCH</a></li>
+               <li><a href="#EPS_EV_SC_ITER" id="list_EPS_EV_SC_ITER">EPS_EV_SC_ITER</a></li>
+               <li><a href="#EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES" id="list_EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES">EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES</a></li>
+               <li><a href="#EV_SC_ITER" id="list_EV_SC_ITER">EV_SC_ITER</a></li>
+               <li><a href="#FERMI_LEVEL_OFFSET" id="list_FERMI_LEVEL_OFFSET">FERMI_LEVEL_OFFSET</a></li>
+               <li><a href="#GAMMA_ONLY_SIGMA" id="list_GAMMA_ONLY_SIGMA">GAMMA_ONLY_SIGMA</a></li>
+               <li><a href="#HF_LIKE_EV_START" id="list_HF_LIKE_EV_START">HF_LIKE_EV_START</a></li>
+               <li><a href="#IC_CORR_LIST" id="list_IC_CORR_LIST">IC_CORR_LIST</a></li>
+               <li><a href="#IC_CORR_LIST_BETA" id="list_IC_CORR_LIST_BETA">IC_CORR_LIST_BETA</a></li>
+               <li><a href="#IMAGE_CHARGE_MODEL" id="list_IMAGE_CHARGE_MODEL">IMAGE_CHARGE_MODEL</a></li>
+               <li><a href="#MAX_ITER_FIT" id="list_MAX_ITER_FIT">MAX_ITER_FIT</a></li>
+               <li><a href="#NPARAM_PADE" id="list_NPARAM_PADE">NPARAM_PADE</a></li>
+               <li><a href="#NUMB_POLES" id="list_NUMB_POLES">NUMB_POLES</a></li>
+               <li><a href="#OMEGA_MAX_FIT" id="list_OMEGA_MAX_FIT">OMEGA_MAX_FIT</a></li>
+               <li><a href="#PERIODIC" id="list_PERIODIC">PERIODIC</a></li>
+               <li><a href="#PRINT_EXX" id="list_PRINT_EXX">PRINT_EXX</a></li>
+               <li><a href="#PRINT_FIT_ERROR" id="list_PRINT_FIT_ERROR">PRINT_FIT_ERROR</a></li>
+               <li><a href="#PRINT_GW_DETAILS" id="list_PRINT_GW_DETAILS">PRINT_GW_DETAILS</a></li>
+               <li><a href="#RI_SIGMA_X" id="list_RI_SIGMA_X">RI_SIGMA_X</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ANALYTIC_CONTINUATION"></a><a href="#list_ANALYTIC_CONTINUATION" id="ANALYTIC_CONTINUATION">ANALYTIC_CONTINUATION</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ANALYTIC_CONTINUATION</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Defines which type of analytic continuation for the self energy is used</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">TWO_POLE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">PADE</code></dt>
+                              <dd><em>Use Pade approximation.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">TWO_POLE</code></dt>
+                              <dd><em>Use 'two-pole' model.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_BSE"></a><a href="#list_BSE" id="BSE">BSE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">BSE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, electronic excitation energies are computed from the Bethe-Salpeter equation on top of GW eigenvalues.  Parameter of BSE can be adjusted in the corresponding section.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CHECK_FIT"></a><a href="#list_CHECK_FIT" id="CHECK_FIT">CHECK_FIT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CHECK_FIT</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, the self-energy on the imaginary axis and the fit are printedthe file self_energy_of_MO_<level>_for_imaginary_frequency.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CORR_MOS_OCC"></a><a href="#list_CORR_MOS_OCC" id="CORR_MOS_OCC">CORR_MOS_OCC</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CORR_MOS_OCC</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of occupied MOs whose energies are corrected by RI-G0W0. Counting beginning from HOMO, e.g. 3 corrected occ. MOs correspond to correction of HOMO, HOMO-1 and HOMO-2. Numerical effort and storage of RI-G0W0 increase linearly with this number. In case you want to correct all occ. MOs, insert a number larger than the number of occ. MOs.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">10</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     CORR_OCC</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CORR_MOS_VIRT"></a><a href="#list_CORR_MOS_VIRT" id="CORR_MOS_VIRT">CORR_MOS_VIRT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CORR_MOS_VIRT</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of virtual MOs whose energies are corrected by RI-G0W0. Counting beginning from LUMO, e.g. 3 corrected occ. MOs correspond to correction of LUMO, LUMO+1 and LUMO+2. Numerical effort and storage of RI-G0W0 increase linearly with this number. In case you want to correct all virt. MOs, insert a number larger than the number of virt. MOs.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">10</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     CORR_VIRT</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CROSSING_SEARCH"></a><a href="#list_CROSSING_SEARCH" id="CROSSING_SEARCH">CROSSING_SEARCH</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CROSSING_SEARCH</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Determines, how the self_energy is evaluated on the real axis.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">Z_SHOT</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BISECTION</code></dt>
+                              <dd><em>Make a bisection fix point iteration.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NEWTON</code></dt>
+                              <dd><em>Make a Newton-Raphson fix point iteration.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NONE</code></dt>
+                              <dd><em>Evaluate the correlation self-energy at the energy eigenvalue of SCF.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">Z_SHOT</code></dt>
+                              <dd><em>Calculate the derivative of Sigma and out of it Z. Then extrapolate using Z.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EPS_EV_SC_ITER"></a><a href="#list_EPS_EV_SC_ITER" id="EPS_EV_SC_ITER">EPS_EV_SC_ITER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EPS_EV_SC_ITER</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Target accuracy for the eigenvalue self-consistency. If the G0W0 HOMO-LUMO gap differs by less than the target accuracy during the iteration, the eigenvalue self-consistency cycle stops. Unit: Hartree.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">5.00000000E-005</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES"></a><a href="#list_EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES" id="EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES">EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EV_SC_GW_REMOVE_NEG_VIRT_ENERGIES</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Set all GW energies of virtual orbitals which are below the HOMO to the value of the last eigenvalue-selfconsistency cycle.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     REMOVE_NEG</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EV_SC_ITER"></a><a href="#list_EV_SC_ITER" id="EV_SC_ITER">EV_SC_ITER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EV_SC_ITER</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum number of iterations for eigenvalue self-consistency cycle. The computational effort of RPA and GW scales linearly with this number. Eigenvalue self-consistency is not implemented for cubic-scaling GW.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FERMI_LEVEL_OFFSET"></a><a href="#list_FERMI_LEVEL_OFFSET" id="FERMI_LEVEL_OFFSET">FERMI_LEVEL_OFFSET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FERMI_LEVEL_OFFSET</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Fermi level for occ. orbitals: e_HOMO + FERMI_LEVEL_OFFSET; Fermi level for virt. orbitals: e_LUMO - FERMI_LEVEL_OFFSET. In case e_homo + FERMI_LEVEL_OFFSET < e_lumo - FERMI_LEVEL_OFFSET, we set Fermi level = (e_HOMO+e_LUMO)/2. For cubic-scaling GW, the Fermi level is always equal to (e_HOMO+e_LUMO)/2 regardless of FERMI_LEVEL_OFFSET.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2.00000000E-002</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_GAMMA_ONLY_SIGMA"></a><a href="#list_GAMMA_ONLY_SIGMA" id="GAMMA_ONLY_SIGMA">GAMMA_ONLY_SIGMA</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">GAMMA_ONLY_SIGMA</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, the correlation self-energy is only computed at the Gamma point. The Gamma point itself is obtained by averaging over all kpoints of the DFT mesh.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     GAMMA</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_HF_LIKE_EV_START"></a><a href="#list_HF_LIKE_EV_START" id="HF_LIKE_EV_START">HF_LIKE_EV_START</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">HF_LIKE_EV_START</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, take as input for GW/RPA corrected HF-like eigenvalues according to PRB 83, 115103 (2011), Sec. IV.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_IC_CORR_LIST"></a><a href="#list_IC_CORR_LIST" id="IC_CORR_LIST">IC_CORR_LIST</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">IC_CORR_LIST</code><code>&nbsp;{Real}&nbsp;...</code><code>&nbsp;or&nbsp;a&nbsp;range&nbsp;{Real}..{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>List of image charge correction from a previous calculation to be applied in G0W0 or evGW. Keyword is active, if the first entry is positive (since IC corrections are positive occupied MOs. The start corresponds to the first corrected GW level.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-2.72113839E+001</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../../../../../units.html">Default unit:</a><code>
+                        [eV]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_IC_CORR_LIST_BETA"></a><a href="#list_IC_CORR_LIST_BETA" id="IC_CORR_LIST_BETA">IC_CORR_LIST_BETA</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">IC_CORR_LIST_BETA</code><code>&nbsp;{Real}&nbsp;...</code><code>&nbsp;or&nbsp;a&nbsp;range&nbsp;{Real}..{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>IC_CORR_LIST for beta spins in case of open shell calculation.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">-2.72113839E+001</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><a href="../../../../../../../../units.html">Default unit:</a><code>
+                        [eV]
+                        </code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_IMAGE_CHARGE_MODEL"></a><a href="#list_IMAGE_CHARGE_MODEL" id="IMAGE_CHARGE_MODEL">IMAGE_CHARGE_MODEL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">IMAGE_CHARGE_MODEL</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, an image charge model is applied to mimic the renormalization of electronic levels of a molecule at a metallic surface. For this calculation, the molecule has to be reflected on the desired xy image plane. The coordinates of the reflected molecule have to be added to the coord file as ghost atoms. For the ghost atoms, identical basis sets the normal atoms have to be used.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     IC</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_ITER_FIT"></a><a href="#list_MAX_ITER_FIT" id="MAX_ITER_FIT">MAX_ITER_FIT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_ITER_FIT</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum number of iterations for the Levenberg-Marquard fit.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">10000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NPARAM_PADE"></a><a href="#list_NPARAM_PADE" id="NPARAM_PADE">NPARAM_PADE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NPARAM_PADE</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of parameters for the Pade approximation when using the latter for the analytic continuation of the self energy. 16 parameters (corresponding to 8 poles) are are recommended.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">16</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_NUMB_POLES"></a><a href="#list_NUMB_POLES" id="NUMB_POLES">NUMB_POLES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">NUMB_POLES</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Number of poles for the fitting. Usually, two poles are sufficient.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_OMEGA_MAX_FIT"></a><a href="#list_OMEGA_MAX_FIT" id="OMEGA_MAX_FIT">OMEGA_MAX_FIT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">OMEGA_MAX_FIT</code><code>&nbsp;{Real}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Determines fitting range for the self-energy on the imaginary axis: [0, OMEGA_MAX_FIT] for virt orbitals, [-OMEGA_MAX_FIT,0] for occ orbitals. Unit: Hartree. Default: 0.734996 H = 20 eV.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one real.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">7.34996000E-001</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PERIODIC"></a><a href="#list_PERIODIC" id="PERIODIC">PERIODIC</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PERIODIC</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, the periodic correction scheme is used employing k-points.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PRINT_EXX"></a><a href="#list_PRINT_EXX" id="PRINT_EXX">PRINT_EXX</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PRINT_EXX</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Print exchange self-energy minus exchange correlation potential for Gamma-only calculation (PRINT). For a GW calculation with k-points we use this output as exchange self-energy (READ). This is a temporary solution because the hybrid MPI/OMP parallelization in the HFX by Manuel Guidon conflicts with the parallelization in low-scaling GW k-points which is most efficient with maximum number of MPI tasks and minimum number of OMP threads. For HFX by M. Guidon, the density matrix is fully replicated on every MPI rank which necessitates a high number of OMP threads per MPI rank for large systems to prevent out of memory. Such a high number of OMP threads would slow down the GW calculation severely. Therefore, it was decided to temporarily divide the GW k-point calculation in a Gamma-only HF calculation with high number of OMP threads to prevent out of memory and a GW k-point calculation with 1 OMP thread per MPI rank reading the previousHF output.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">FALSE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FALSE</code></dt>
+                              <dd><em>FALSE is needed if you want to do nothing here.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">READ</code></dt>
+                              <dd><em>Please, put READ for the k-point GW calculation to read the exact exchange. You have to provide an output file including the exact exchange. This file has to be named 'exx.dat'.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SKIP_FOR_REGTEST</code></dt>
+                              <dd><em>SKIP_FOR_REGTEST is only used for the GW k-point regtest where no exchange self-energy is computed.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">TRUE</code></dt>
+                              <dd><em>Please, put TRUE for Gamma only calculation to get the exchange self-energy. If 'SIGMA_X' and the corresponding values for the exchange-energy are written, the writing has been successful</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PRINT_FIT_ERROR"></a><a href="#list_PRINT_FIT_ERROR" id="PRINT_FIT_ERROR">PRINT_FIT_ERROR</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PRINT_FIT_ERROR</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Print the statistical error due to the fitting. This error in most cases is very pessimistic (e.g. can be a factor of 10 too large).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     FIT_ERROR</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PRINT_GW_DETAILS"></a><a href="#list_PRINT_GW_DETAILS" id="PRINT_GW_DETAILS">PRINT_GW_DETAILS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PRINT_GW_DETAILS</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, prints additional information on the quasiparticle energies.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RI_SIGMA_X"></a><a href="#list_RI_SIGMA_X" id="RI_SIGMA_X">RI_SIGMA_X</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RI_SIGMA_X</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If true, the exchange self-energy is calculated approximatively with RI. This is only recommended in case exact exchange is very costly, e.g. when using diffuse basis functions (seems not to work for periodic systems).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

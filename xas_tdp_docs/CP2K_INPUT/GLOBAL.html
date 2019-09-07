@@ -1,0 +1,1777 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / GLOBAL</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Section with general information regarding which kind of simulation to perform an parameters for the whole PROGRAM">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../index.html#CP2K_INPUT/GLOBAL.html">Section GLOBAL</a></h2>
+      <ul class="none">
+         <li><em>Section with general information regarding which kind of simulation to perform an parameters for the whole PROGRAM</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="GLOBAL.html">GLOBAL</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="GLOBAL/DBCSR.html">DBCSR</a></li>
+               <li><a href="GLOBAL/FM.html">FM</a></li>
+               <li><a href="GLOBAL/FM_DIAG_SETTINGS.html">FM_DIAG_SETTINGS</a></li>
+               <li><a href="GLOBAL/PRINT.html">PRINT</a></li>
+               <li><a href="GLOBAL/PRINT_ELPA.html">PRINT_ELPA</a></li>
+               <li><a href="GLOBAL/PROGRAM_RUN_INFO.html">PROGRAM_RUN_INFO</a></li>
+               <li><a href="GLOBAL/REFERENCES.html">REFERENCES</a></li>
+               <li><a href="GLOBAL/TIMINGS.html">TIMINGS</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#ALLTOALL_SGL" id="list_ALLTOALL_SGL">ALLTOALL_SGL</a></li>
+               <li><a href="#BLACS_GRID" id="list_BLACS_GRID">BLACS_GRID</a></li>
+               <li><a href="#BLACS_REPEATABLE" id="list_BLACS_REPEATABLE">BLACS_REPEATABLE</a></li>
+               <li><a href="#CALLGRAPH" id="list_CALLGRAPH">CALLGRAPH</a></li>
+               <li><a href="#CALLGRAPH_FILE_NAME" id="list_CALLGRAPH_FILE_NAME">CALLGRAPH_FILE_NAME</a></li>
+               <li><a href="#ECHO_ALL_HOSTS" id="list_ECHO_ALL_HOSTS">ECHO_ALL_HOSTS</a></li>
+               <li><a href="#ECHO_INPUT" id="list_ECHO_INPUT">ECHO_INPUT</a></li>
+               <li><a href="#ELPA_KERNEL" id="list_ELPA_KERNEL">ELPA_KERNEL</a></li>
+               <li><a href="#ELPA_QR" id="list_ELPA_QR">ELPA_QR</a></li>
+               <li><a href="#ELPA_QR_UNSAFE" id="list_ELPA_QR_UNSAFE">ELPA_QR_UNSAFE</a></li>
+               <li><a href="#ENABLE_MPI_IO" id="list_ENABLE_MPI_IO">ENABLE_MPI_IO</a></li>
+               <li><a href="#EXTENDED_FFT_LENGTHS" id="list_EXTENDED_FFT_LENGTHS">EXTENDED_FFT_LENGTHS</a></li>
+               <li><a href="#FFTW_PLAN_TYPE" id="list_FFTW_PLAN_TYPE">FFTW_PLAN_TYPE</a></li>
+               <li><a href="#FFTW_WISDOM_FILE_NAME" id="list_FFTW_WISDOM_FILE_NAME">FFTW_WISDOM_FILE_NAME</a></li>
+               <li><a href="#FFT_POOL_SCRATCH_LIMIT" id="list_FFT_POOL_SCRATCH_LIMIT">FFT_POOL_SCRATCH_LIMIT</a></li>
+               <li><a href="#FLUSH_SHOULD_FLUSH" id="list_FLUSH_SHOULD_FLUSH">FLUSH_SHOULD_FLUSH</a></li>
+               <li><a href="#OUTPUT_FILE_NAME" id="list_OUTPUT_FILE_NAME">OUTPUT_FILE_NAME</a></li>
+               <li><a href="#PREFERRED_DIAG_LIBRARY" id="list_PREFERRED_DIAG_LIBRARY">PREFERRED_DIAG_LIBRARY</a></li>
+               <li><a href="#PREFERRED_FFT_LIBRARY" id="list_PREFERRED_FFT_LIBRARY">PREFERRED_FFT_LIBRARY</a></li>
+               <li><a href="#PRINT_LEVEL" id="list_PRINT_LEVEL">PRINT_LEVEL</a></li>
+               <li><a href="#PROGRAM_NAME" id="list_PROGRAM_NAME">PROGRAM_NAME</a></li>
+               <li><a href="#PROJECT_NAME" id="list_PROJECT_NAME">PROJECT_NAME</a></li>
+               <li><a href="#RUN_TYPE" id="list_RUN_TYPE">RUN_TYPE</a></li>
+               <li><a href="#SAVE_MEM" id="list_SAVE_MEM">SAVE_MEM</a></li>
+               <li><a href="#SEED" id="list_SEED">SEED</a></li>
+               <li><a href="#TRACE" id="list_TRACE">TRACE</a></li>
+               <li><a href="#TRACE_MASTER" id="list_TRACE_MASTER">TRACE_MASTER</a></li>
+               <li><a href="#TRACE_MAX" id="list_TRACE_MAX">TRACE_MAX</a></li>
+               <li><a href="#TRACE_ROUTINES" id="list_TRACE_ROUTINES">TRACE_ROUTINES</a></li>
+               <li><a href="#WALLTIME" id="list_WALLTIME">WALLTIME</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ALLTOALL_SGL"></a><a href="#list_ALLTOALL_SGL" id="ALLTOALL_SGL">ALLTOALL_SGL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ALLTOALL_SGL</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>All-to-all communication (FFT) should use single precision</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_BLACS_GRID"></a><a href="#list_BLACS_GRID" id="BLACS_GRID">BLACS_GRID</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">BLACS_GRID</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>how to distribute the processors on the 2d grid needed by BLACS (and thus SCALAPACK)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">SQUARE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">COLUMN</code></dt>
+                              <dd><em>Distribution by matrix columns</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ROW</code></dt>
+                              <dd><em>Distribution by matrix rows</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SQUARE</code></dt>
+                              <dd><em>Distribution by matrix blocks</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_BLACS_REPEATABLE"></a><a href="#list_BLACS_REPEATABLE" id="BLACS_REPEATABLE">BLACS_REPEATABLE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">BLACS_REPEATABLE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Use a topology for BLACS collectives that is guaranteed to be repeatable on homogeneous architectures</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CALLGRAPH"></a><a href="#list_CALLGRAPH" id="CALLGRAPH">CALLGRAPH</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CALLGRAPH</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>At the end of the run write a callgraph to file, which contains detailed timing informations. This callgraph can be viewed e.g. with the open-source program kcachegrind.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">NONE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ALL</code></dt>
+                              <dd><em>All processes write their callgraph (into a separate files).</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MASTER</code></dt>
+                              <dd><em>Only the master process writes his callgraph</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NONE</code></dt>
+                              <dd><em>No callgraph gets written</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_CALLGRAPH_FILE_NAME"></a><a href="#list_CALLGRAPH_FILE_NAME" id="CALLGRAPH_FILE_NAME">CALLGRAPH_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">CALLGRAPH_FILE_NAME</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the callgraph file, which is written at the end of the run. If not specified the project name will be used as filename.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ECHO_ALL_HOSTS"></a><a href="#list_ECHO_ALL_HOSTS" id="ECHO_ALL_HOSTS">ECHO_ALL_HOSTS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ECHO_ALL_HOSTS</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Echo a list of hostname and pid for all MPI processes.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ECHO_INPUT"></a><a href="#list_ECHO_INPUT" id="ECHO_INPUT">ECHO_INPUT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ECHO_INPUT</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If the input should be echoed to the output with all the defaults made explicit</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ELPA_KERNEL"></a><a href="#list_ELPA_KERNEL" id="ELPA_KERNEL">ELPA_KERNEL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ELPA_KERNEL</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the kernel to be used when ELPA is in use</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">AVX2_BLOCK4</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AUTO</code></dt>
+                              <dd><em>Automatically selected kernel</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX2_BLOCK2</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX2 (block=2)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX2_BLOCK4</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX2 (block=4)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX2_BLOCK6</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX2 (block=6)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX512_BLOCK2</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX-512 (block=2)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX512_BLOCK4</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX-512 (block=4)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX512_BLOCK6</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX-512 (block=6)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX_BLOCK2</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX (block=2)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX_BLOCK4</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX (block=4)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">AVX_BLOCK6</code></dt>
+                              <dd><em>Kernel optimized for Intel AVX (block=6)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BGP</code></dt>
+                              <dd><em>Kernel optimized for IBM BGP</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BGQ</code></dt>
+                              <dd><em>Kernel optimized for IBM BGQ</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">GENERIC</code></dt>
+                              <dd><em>Generic kernel</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">GENERIC_SIMPLE</code></dt>
+                              <dd><em>Simplified generic kernel</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">GPU</code></dt>
+                              <dd><em>Kernel targeting GPUs</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SSE</code></dt>
+                              <dd><em>Kernel optimized for x86_64/SSE</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SSE_BLOCK2</code></dt>
+                              <dd><em>Kernel optimized for x86_64/SSE (block=2)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SSE_BLOCK4</code></dt>
+                              <dd><em>Kernel optimized for x86_64/SSE (block=4)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SSE_BLOCK6</code></dt>
+                              <dd><em>Kernel optimized for x86_64/SSE (block=6)</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ELPA_QR"></a><a href="#list_ELPA_QR" id="ELPA_QR">ELPA_QR</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ELPA_QR</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>For ELPA, enable a blocked QR step when reducing the input matrix to banded form in preparation for the actual diagonalization step. See implementation paper for more details. Requires ELPA version 201505 or newer, automatically deactivated otherwise. If true, QR is activated only when the the size of the diagonalized matrix is suitable. Print key PRINT_ELPA is useful in determining which matrices are suitable for QR. Might accelerate the diagonalization of suitable matrices.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ELPA_QR_UNSAFE"></a><a href="#list_ELPA_QR_UNSAFE" id="ELPA_QR_UNSAFE">ELPA_QR_UNSAFE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ELPA_QR_UNSAFE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>For ELPA, disable block size limitations when used together with ELPA_QR. Keyword relevant only with ELPA versions 201605 or newer. Use keyword with caution, as it might result in wrong eigenvalues with some matrix orders/block sizes when the number of MPI processes is varied. If the print key PRINT_ELPA is active the validity of the eigenvalues is checked against values calculated without ELPA QR.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ENABLE_MPI_IO"></a><a href="#list_ENABLE_MPI_IO" id="ENABLE_MPI_IO">ENABLE_MPI_IO</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ENABLE_MPI_IO</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Enable MPI parallelization for all supported I/O routines Currently, only cube file writer/reader routines use MPI I/O. Disabling this flag might speed up calculations dominated by I/O.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_EXTENDED_FFT_LENGTHS"></a><a href="#list_EXTENDED_FFT_LENGTHS" id="EXTENDED_FFT_LENGTHS">EXTENDED_FFT_LENGTHS</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">EXTENDED_FFT_LENGTHS</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Use fft library specific values for the allows number of points in FFTs. The default is to use the internal FFT lengths. For external fft libraries this may create an error at the external library level, because the length provided by cp2k is not supported by the external library. In this case switch on this keyword to obtain, with certain fft libraries, lengths matching the external fft library lengths, or larger allowed grids, or grids that more precisely match a given cutoff. IMPORTANT NOTE: in this case, the actual grids used in CP2K depends on the FFT library. A change of FFT library must therefore be considered equivalent to a change of basis, which implies a change of total energy.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FFTW_PLAN_TYPE"></a><a href="#list_FFTW_PLAN_TYPE" id="FFTW_PLAN_TYPE">FFTW_PLAN_TYPE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FFTW_PLAN_TYPE</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>FFTW can have improved performance if it is allowed to plan with explicit measurements which strategy is best for a given FFT. While a plan based on measurements is generally faster, differences in machine load will lead to different plans for the same input file, and thus numerics for the FFTs will be slightly different from run to run.PATIENT planning is recommended for long ab initio MD runs.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">ESTIMATE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ESTIMATE</code></dt>
+                              <dd><em>Quick estimate, no runtime measurements.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">EXHAUSTIVE</code></dt>
+                              <dd><em>Measurements trying all possibilities - use with caution.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MEASURE</code></dt>
+                              <dd><em>Quick measurement, somewhat faster FFTs.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">PATIENT</code></dt>
+                              <dd><em>Measurements trying a wider range of possibilities.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../references.html#reference_62">Frigo2005</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FFTW_WISDOM_FILE_NAME"></a><a href="#list_FFTW_WISDOM_FILE_NAME" id="FFTW_WISDOM_FILE_NAME">FFTW_WISDOM_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FFTW_WISDOM_FILE_NAME</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>The name of the file that contains wisdom (pre-planned FFTs) for use with FFTW3. Using wisdom can significantly speed up the FFTs (see the FFTW homepage for details). Note that wisdom is not transferable between different computer (architectures). Wisdom can be generated using the fftw-wisdom tool that is part of the fftw installation. cp2k/tools/cp2k-wisdom is a script that contains some additional info, and can help to generate a useful default for /etc/fftw/wisdom or particular values for a given simulation.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">/etc/fftw/wisdom</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FFT_POOL_SCRATCH_LIMIT"></a><a href="#list_FFT_POOL_SCRATCH_LIMIT" id="FFT_POOL_SCRATCH_LIMIT">FFT_POOL_SCRATCH_LIMIT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FFT_POOL_SCRATCH_LIMIT</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Limits the memory usage of the FFT scratch pool, potentially reducing efficiency a bit</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">15</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FLUSH_SHOULD_FLUSH"></a><a href="#list_FLUSH_SHOULD_FLUSH" id="FLUSH_SHOULD_FLUSH">FLUSH_SHOULD_FLUSH</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FLUSH_SHOULD_FLUSH</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Flush output regularly, enabling this option might degrade performance significantly on certain machines.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_OUTPUT_FILE_NAME"></a><a href="#list_OUTPUT_FILE_NAME" id="OUTPUT_FILE_NAME">OUTPUT_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">OUTPUT_FILE_NAME</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the output file. Relevant only if automatically started (through farming for example). If empty uses the project name as basis for it.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PREFERRED_DIAG_LIBRARY"></a><a href="#list_PREFERRED_DIAG_LIBRARY" id="PREFERRED_DIAG_LIBRARY">PREFERRED_DIAG_LIBRARY</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PREFERRED_DIAG_LIBRARY</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the DIAGONALIZATION library to be used. If not available, the standard scalapack is used</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">SL</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ELPA</code></dt>
+                              <dd><em>ELPA</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SL</code></dt>
+                              <dd><em>Standard (Sca)LAPACK: syevd</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../references.html#reference_184">Marek2014</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PREFERRED_FFT_LIBRARY"></a><a href="#list_PREFERRED_FFT_LIBRARY" id="PREFERRED_FFT_LIBRARY">PREFERRED_FFT_LIBRARY</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PREFERRED_FFT_LIBRARY</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the FFT library which should be preferred. If it is not available, use FFTW3 if this is linked in, if FFTW3 is not available use FFTSG. Improved performance with FFTW3 can be obtained specifying a proper value for FFTW_PLAN_TYPE. Contrary to earlier CP2K versions, all libraries will result in the same grids, i.e. the subset of grids which all FFT libraries can transform. See EXTENDED_FFT_LENGTHS if larger FFTs or grids that more precisely match a given cutoff are needed, or older results need to be reproduced. FFTW3 is often (close to) optimal, and well tested with CP2K.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">FFTW3</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FFTSG</code></dt>
+                              <dd><em>Stefan Goedecker's FFT (FFTSG), always available, will be used in case a FFT library is specified and not available.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FFTW</code></dt>
+                              <dd><em>Same as FFTW3 (for compatibility with CP2K 2.3)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FFTW3</code></dt>
+                              <dd><em>a fast portable FFT library. Recommended.See also the FFTW_PLAN_TYPE, and FFTW_WISDOM_FILE_NAME keywords.</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../references.html#reference_62">Frigo2005</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PRINT_LEVEL"></a><a href="#list_PRINT_LEVEL" id="PRINT_LEVEL">PRINT_LEVEL</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PRINT_LEVEL</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>How much output is written out.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">MEDIUM</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">DEBUG</code></dt>
+                              <dd><em>Everything is written out, useful for debugging purposes only</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">HIGH</code></dt>
+                              <dd><em>Lots of output</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">LOW</code></dt>
+                              <dd><em>Little output</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MEDIUM</code></dt>
+                              <dd><em>Quite some output</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SILENT</code></dt>
+                              <dd><em>Almost no output</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     IOLEVEL</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PROGRAM_NAME"></a><a href="#list_PROGRAM_NAME" id="PROGRAM_NAME">PROGRAM_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PROGRAM_NAME</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Which program should be run</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">CP2K</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ATOM</code></dt>
+                              <dd><em>Runs single atom calculations</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">CP2K</code></dt>
+                              <dd><em>Runs one of the CP2K package</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">FARMING</code></dt>
+                              <dd><em>Runs N independent jobs in a single run</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MC_ANALYSIS</code></dt>
+                              <dd><em>Runs (Tree) Monte Carlo trajectory file analysis</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">OPTIMIZE_BASIS</code></dt>
+                              <dd><em>A tool to create a MOLOPT or ADMM basis for a given set of training structures</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">OPTIMIZE_INPUT</code></dt>
+                              <dd><em>A tool to optimize parameters in a CP2K input</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SWARM</code></dt>
+                              <dd><em>Runs swarm based calculation</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">TEST</code></dt>
+                              <dd><em>Do some benchmarking and testing</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">TMC</code></dt>
+                              <dd><em>Runs Tree Monte Carlo algorithm using additional input file(s)</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     PROGRAM</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PROJECT_NAME"></a><a href="#list_PROJECT_NAME" id="PROJECT_NAME">PROJECT_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PROJECT_NAME</code><code>&nbsp;{Word}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the project (used to build the name of the trajectory, and other files generated by the program)</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one word.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">PROJECT</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     PROJECT</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_RUN_TYPE"></a><a href="#list_RUN_TYPE" id="RUN_TYPE">RUN_TYPE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">RUN_TYPE</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Type of run that you want to perform Geometry optimization, md, montecarlo,...</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">ENERGY_FORCE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BAND</code></dt>
+                              <dd><em>Band methods</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BSSE</code></dt>
+                              <dd><em>Basis set superposition error</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">CELL_OPT</code></dt>
+                              <dd><em>Cell optimization. Both cell vectors and atomic positions are optimised.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">DEBUG</code></dt>
+                              <dd><em>Performs a Debug analysis</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">DRIVER</code></dt>
+                              <dd><em>i-PI driver mode</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">EHRENFEST_DYN</code></dt>
+                              <dd><em>Ehrenfest dynamics (using real time propagation of the wavefunction)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ELECTRONIC_SPECTRA</code></dt>
+                              <dd><em>Alias for SPECTRA</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ENERGY</code></dt>
+                              <dd><em>Computes energy</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">ENERGY_FORCE</code></dt>
+                              <dd><em>Computes energy and forces</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">GEOMETRY_OPTIMIZATION</code></dt>
+                              <dd><em>Alias for GEO_OPT</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">GEO_OPT</code></dt>
+                              <dd><em>Geometry Optimization</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">LINEAR_RESPONSE</code></dt>
+                              <dd><em>Alias for LR</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">LR</code></dt>
+                              <dd><em>Linear Response</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MC</code></dt>
+                              <dd><em>Monte Carlo</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MD</code></dt>
+                              <dd><em>Molecular Dynamics</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MOLECULAR_DYNAMICS</code></dt>
+                              <dd><em>Alias for MD</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">MONTECARLO</code></dt>
+                              <dd><em>Alias for MC</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NEGF</code></dt>
+                              <dd><em>Non-equilibrium Green's function method</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NONE</code></dt>
+                              <dd><em>Perform no tasks</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NORMAL_MODES</code></dt>
+                              <dd><em>Alias for VIBRATIONAL_ANALYSIS</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">PINT</code></dt>
+                              <dd><em>Path integral</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">RT_PROPAGATION</code></dt>
+                              <dd><em>Real Time propagation run (fixed ionic positions)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">SPECTRA</code></dt>
+                              <dd><em>Computes absorption Spectra</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">TAMC</code></dt>
+                              <dd><em>Temperature Accelerated Monte Carlo (TAMC)</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">TMC</code></dt>
+                              <dd><em>Tree Monte Carlo (TMC), a pre-sampling MC algorithm</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">VIBRATIONAL_ANALYSIS</code></dt>
+                              <dd><em>Vibrational analysis</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">WAVEFUNCTION_OPTIMIZATION</code></dt>
+                              <dd><em>Alias for ENERGY</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">WFN_OPT</code></dt>
+                              <dd><em>Alias for ENERGY</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following references:
+                     
+                     [<a href="../references.html#reference_168">Ceriotti2014</a>]
+                     
+                     [<a href="../references.html#reference_167">Schonherr2014</a>]
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SAVE_MEM"></a><a href="#list_SAVE_MEM" id="SAVE_MEM">SAVE_MEM</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SAVE_MEM</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Some sections of the input structure are deallocated when not needed, and reallocated only when used. This reduces the required maximum memory</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_SEED"></a><a href="#list_SEED" id="SEED">SEED</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">SEED</code><code>&nbsp;{Integer}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Initial seed for the global (pseudo)random number generator to create a stream of normally Gaussian distributed random numbers. Exactly 1 or 6 positive integer values are expected. A single value is replicated to fill up the full seed array with 6 numbers.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of integers.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TRACE"></a><a href="#list_TRACE" id="TRACE">TRACE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TRACE</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>If a debug trace of the execution of the program should be written</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TRACE_MASTER"></a><a href="#list_TRACE_MASTER" id="TRACE_MASTER">TRACE_MASTER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TRACE_MASTER</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>For parallel TRACEd runs: only the master node writes output.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TRACE_MAX"></a><a href="#list_TRACE_MAX" id="TRACE_MAX">TRACE_MAX</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TRACE_MAX</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Limit the total number a given subroutine is printed in the trace. Accounting is not influenced.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">2147483647</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TRACE_ROUTINES"></a><a href="#list_TRACE_ROUTINES" id="TRACE_ROUTINES">TRACE_ROUTINES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TRACE_ROUTINES</code><code>&nbsp;{Word}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>A list of routines to trace. If left empty all routines are traced. Accounting is not influenced.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of words.
+                     </td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_WALLTIME"></a><a href="#list_WALLTIME" id="WALLTIME">WALLTIME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">WALLTIME</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Maximum execution time for this run. Time in seconds or in HH:MM:SS.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     WALLTI</td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>

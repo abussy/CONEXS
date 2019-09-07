@@ -1,0 +1,787 @@
+<!DOCTYPE html
+  PUBLIC "html" "html">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CP2K_INPUT / FORCE_EVAL / DFT / QS / CDFT</title>
+      <meta name="language" content="en">
+      <meta name="copyright" content="2000 - 2019 CP2K developers group">
+      <meta name="description" content="Parameters needed to set up a constrained DFT calculation. Each repetition of the ATOM_GROUP section defines a new constraint. The constraint(s) is (are) converged in a separate external SCF loop with settings read from the OUTER_SCF section. Supported constraints: Becke and Gaussian Hirshfeld (partial).">
+      <meta name="keywords" content="scientific,computing,chemistry,physics,documentation,help,manual,Fortran,parallel,molecular dynamics,MD,density functional theory,DFT,electronic structure,linear scaling,force field,Quickstep,GPW,GAPW,FIST,QM,MM">
+      <link rel="shortcut icon" href="../../../../favicon.png" type="image/png">
+      <style type="text/css">
+  a {text-decoration: none;}
+  body {background-color: #ffffff;}
+  code.upper {text-transform: uppercase;}
+  li {margin-left: 0em; padding-left: 0em; text-indent: 0em;}
+  p.uctt {font-family: monospace; text-transform: uppercase;}
+  table.default {table-layout: fixed; width: 100%;}
+  td.l {width: 25%;}
+  td.r {width: 75%;}
+  ul.circle {list-style-type: circle;}
+  ul.disc {list-style-type: disc;}
+  ul.index {list-style-type: none; margin-left: 0em; padding-left: 1.8em; text-indent: 0em;}
+  ul.none {list-style-type: none;}
+  ul.noscript {list-style-type: disc;}
+  ul.square {list-style-type: square;}
+  .button {font-family: monospace; font-size: 100%; cursor: pointer;}
+  #html_table
+  {
+   border: 1px solid #000000;
+   border-collapse: collapse;
+   margin-left: 25px;
+   padding: 6px;
+   text-align: left;
+   vertical-align: middle;
+  }
+ </style><noscript>
+         <style>
+   ul.index {list-style-type: disc; margin-left: 0px; padding-left: 1.8em; text-indent: 0px}
+   ul.noscript {display: none}
+  </style></noscript><script language="javascript" type="text/javascript" src="../../../../toggle_folding.js"></script></head>
+   <body>
+      <table class="default" summary="header">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../index.html">main page</a> of this manual
+               </td>
+            <td align="center">
+               Input reference of CP2K version 7.0</td>
+            <td align="right">
+               <form method="get" action="https://www.google.com/search"><input type="text" name="q" maxlength="255"><input type="submit" value="Search this manual (Google)"><input type="hidden" name="domains" value="https://manual.cp2k.org/trunk/"><input type="radio" style="visibility:hidden" name="sitesearch" value="https://manual.cp2k.org/trunk/" checked></form>
+            </td>
+         </tr>
+      </table>
+      <hr>
+      <h2><a href="../../../../index.html#CP2K_INPUT/FORCE_EVAL/DFT/QS/CDFT.html">Section CDFT</a></h2>
+      <ul class="none">
+         <li><em>Parameters needed to set up a constrained DFT calculation. Each repetition of the ATOM_GROUP section defines a new constraint. The constraint(s) is (are) converged in a separate external SCF loop with settings read from the OUTER_SCF section. Supported constraints: Becke and Gaussian Hirshfeld (partial).</em></li>
+      </ul>
+      <ul class="none">
+         <li>
+            Section path:
+            <code class="upper"><a href="../../../../CP2K_INPUT.html">CP2K_INPUT</a> /
+               <a href="../../../FORCE_EVAL.html">FORCE_EVAL</a> /
+               <a href="../../DFT.html">DFT</a> /
+               <a href="../QS.html">QS</a> /
+               <a href="CDFT.html">CDFT</a></code></li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cannot be repeated.
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            This section cites the following references:
+            
+            [<a href="../../../../references.html#reference_183">Holmberg2017</a>]
+            
+            [<a href="../../../../references.html#reference_196">Holmberg2018</a>]
+            </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Subsections</h3>
+            <ul class="disc">
+               <li><a href="CDFT/ATOM_GROUP.html">ATOM_GROUP</a></li>
+               <li><a href="CDFT/BECKE_CONSTRAINT.html">BECKE_CONSTRAINT</a></li>
+               <li><a href="CDFT/DUMMY_ATOMS.html">DUMMY_ATOMS</a></li>
+               <li><a href="CDFT/HIRSHFELD_CONSTRAINT.html">HIRSHFELD_CONSTRAINT</a></li>
+               <li><a href="CDFT/OUTER_SCF.html">OUTER_SCF</a></li>
+               <li><a href="CDFT/PROGRAM_RUN_INFO.html">PROGRAM_RUN_INFO</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keywords</h3>
+            <ul class="disc">
+               <li><a href="#ATOMIC_CHARGES" id="list_ATOMIC_CHARGES">ATOMIC_CHARGES</a></li>
+               <li><a href="#COUNTER" id="list_COUNTER">COUNTER</a></li>
+               <li><a href="#FLIP_FRAGMENT_A" id="list_FLIP_FRAGMENT_A">FLIP_FRAGMENT_A</a></li>
+               <li><a href="#FLIP_FRAGMENT_B" id="list_FLIP_FRAGMENT_B">FLIP_FRAGMENT_B</a></li>
+               <li><a href="#FRAGMENT_A_FILE_NAME" id="list_FRAGMENT_A_FILE_NAME">FRAGMENT_A_FILE_NAME</a></li>
+               <li><a href="#FRAGMENT_A_SPIN_FILE" id="list_FRAGMENT_A_SPIN_FILE">FRAGMENT_A_SPIN_FILE</a></li>
+               <li><a href="#FRAGMENT_B_FILE_NAME" id="list_FRAGMENT_B_FILE_NAME">FRAGMENT_B_FILE_NAME</a></li>
+               <li><a href="#FRAGMENT_B_SPIN_FILE" id="list_FRAGMENT_B_SPIN_FILE">FRAGMENT_B_SPIN_FILE</a></li>
+               <li><a href="#MAX_REUSE" id="list_MAX_REUSE">MAX_REUSE</a></li>
+               <li><a href="#PRECOND_FREQ" id="list_PRECOND_FREQ">PRECOND_FREQ</a></li>
+               <li><a href="#PURGE_FREQ" id="list_PURGE_FREQ">PURGE_FREQ</a></li>
+               <li><a href="#PURGE_HISTORY" id="list_PURGE_HISTORY">PURGE_HISTORY</a></li>
+               <li><a href="#PURGE_OFFSET" id="list_PURGE_OFFSET">PURGE_OFFSET</a></li>
+               <li><a href="#REUSE_PRECOND" id="list_REUSE_PRECOND">REUSE_PRECOND</a></li>
+               <li><a href="#STRENGTH" id="list_STRENGTH">STRENGTH</a></li>
+               <li><a href="#TARGET" id="list_TARGET">TARGET</a></li>
+               <li><a href="#TYPE_OF_CONSTRAINT" id="list_TYPE_OF_CONSTRAINT">TYPE_OF_CONSTRAINT</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="none">
+         <li>
+            <h3>Keyword descriptions</h3>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_ATOMIC_CHARGES"></a><a href="#list_ATOMIC_CHARGES" id="ATOMIC_CHARGES">ATOMIC_CHARGES</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">ATOMIC_CHARGES</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Calculate atomic CDFT charges with selected weight function (Z = Z_core - Z_CDFT). With fragment based constraints, charges are relative to the fragment reference state i.e. Z = Z_CDFT -  Z_frag_reference. Note: if the number of atoms is greater than the default pw_pool max cache, calculation of atomic CDFT charges will prompt harmless warnings during deallocation of atomic grids.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_COUNTER"></a><a href="#list_COUNTER" id="COUNTER">COUNTER</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">COUNTER</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>A counter to track the total number of energy evaluations. Needed by some optimizers to print information. Useful mainly for restarts.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FLIP_FRAGMENT_A"></a><a href="#list_FLIP_FRAGMENT_A" id="FLIP_FRAGMENT_A">FLIP_FRAGMENT_A</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FLIP_FRAGMENT_A</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Logical which determines if the reference spin difference density (rho_alpha-rho_beta) for fragment A should be flipped. With default (off) value, the fragment is constrained to have more alpha than beta electrons if the isolated fragment has unpaired electrons. Useful in conjunction with FLIP_FRAGMENT_B.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FLIP_FRAGMENT_B"></a><a href="#list_FLIP_FRAGMENT_B" id="FLIP_FRAGMENT_B">FLIP_FRAGMENT_B</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FLIP_FRAGMENT_B</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Logical which determines if the reference spin difference density (rho_alpha-rho_beta) for fragment B should be flipped. With default (off) value, the fragment is constrained to have more alpha than beta electrons if the isolated fragment has unpaired electrons. Useful in conjunction with FLIP_FRAGMENT_A.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FRAGMENT_A_FILE_NAME"></a><a href="#list_FRAGMENT_A_FILE_NAME" id="FRAGMENT_A_FILE_NAME">FRAGMENT_A_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FRAGMENT_A_FILE_NAME</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the reference total electron density cube file for fragment A. May include a path. The reference electron density needs to be outputted on the same grid as the full system (same cutoff and cell, output stride 1).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">fragment_a.cube</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     FRAGMENT_A_FILE</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FRAGMENT_A_SPIN_FILE"></a><a href="#list_FRAGMENT_A_SPIN_FILE" id="FRAGMENT_A_SPIN_FILE">FRAGMENT_A_SPIN_FILE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FRAGMENT_A_SPIN_FILE</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the reference spin density cube file for fragment A. May include a path. The reference spin density needs to be outputted on the same grid as the full system (same cutoff and cell, output stride 1).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">fragment_a_spin.cube</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     FRAGMENT_A_SPIN_FILE_NAME</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FRAGMENT_B_FILE_NAME"></a><a href="#list_FRAGMENT_B_FILE_NAME" id="FRAGMENT_B_FILE_NAME">FRAGMENT_B_FILE_NAME</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FRAGMENT_B_FILE_NAME</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the reference total electron density cube file for fragment B. May include a path. The reference electron density needs to be outputted on the same grid as the full system (same cutoff and cell, output stride 1).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">fragment_b.cube</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     FRAGMENT_B_FILE</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_FRAGMENT_B_SPIN_FILE"></a><a href="#list_FRAGMENT_B_SPIN_FILE" id="FRAGMENT_B_SPIN_FILE">FRAGMENT_B_SPIN_FILE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">FRAGMENT_B_SPIN_FILE</code><code>&nbsp;{String}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Name of the reference spin density cube file for fragment B. May include a path. The reference spin density needs to be outputted on the same grid as the full system (same cutoff and cell, output stride 1).</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one string.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">fragment_b_spin.cube</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Alias names for this keyword:
+                     FRAGMENT_B_SPIN_FILE_NAME</td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_MAX_REUSE"></a><a href="#list_MAX_REUSE" id="MAX_REUSE">MAX_REUSE</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">MAX_REUSE</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Determines how many times a previously built preconditioner can be reused.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PRECOND_FREQ"></a><a href="#list_PRECOND_FREQ" id="PRECOND_FREQ">PRECOND_FREQ</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PRECOND_FREQ</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>See REUSE_PRECOND.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PURGE_FREQ"></a><a href="#list_PURGE_FREQ" id="PURGE_FREQ">PURGE_FREQ</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PURGE_FREQ</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>See PURGE_HISTORY.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PURGE_HISTORY"></a><a href="#list_PURGE_HISTORY" id="PURGE_HISTORY">PURGE_HISTORY</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PURGE_HISTORY</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Purge wavefunction and constraint history to improve SCF convergence during MD. Counts how often the convergence of the first CDFT SCF iteration takes 2 or more outer SCF iterations and purges the history if the counter exceeds PURGE_FREQ, and PURGE_OFFSET  MD steps have passed since the last purge. The counter is zeroed after each purge.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_PURGE_OFFSET"></a><a href="#list_PURGE_OFFSET" id="PURGE_OFFSET">PURGE_OFFSET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">PURGE_OFFSET</code><code>&nbsp;{Integer}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>See PURGE_HISTORY.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one integer.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">1</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_REUSE_PRECOND"></a><a href="#list_REUSE_PRECOND" id="REUSE_PRECOND">REUSE_PRECOND</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">REUSE_PRECOND</code><code>&nbsp;{Logical}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Reuse a previously built OT preconditioner between subsequent CDFT SCF iterations if the inner OT SCF loop converged in PRECOND_FREQ steps or less. Intended mainly for MD simulations with the FULL_ALL preconditioner to speed up the final iterations of the CDFT SCF loop.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one logical.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     The lone keyword behaves as a switch to
+                     <code class="upper">.TRUE.</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">.FALSE.</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_STRENGTH"></a><a href="#list_STRENGTH" id="STRENGTH">STRENGTH</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">STRENGTH</code><code>&nbsp;{Real}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Constraint force constants (Lagrange multipliers). Give one value per constraint group.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TARGET"></a><a href="#list_TARGET" id="TARGET">TARGET</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TARGET</code><code>&nbsp;{Real}&nbsp;...</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Constraint target values. Give one value per constraint group. The target value is the desired number of valence electrons, spin moment, or the number of alpha or beta electrons on the atoms that define the constraint, suitably multiplied by atomic coefficients in case a relative constraint between two sets of atoms is employed. Note that core charges are not subtracted from the target value.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     a list of reals.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">0.00000000E+000</code></td>
+               </tr>
+            </table>
+            <table class="default" summary="keyword_description">
+               <tr>
+                  <td class="l">
+                     <ul class="disc">
+                        <li><a id="desc_TYPE_OF_CONSTRAINT"></a><a href="#list_TYPE_OF_CONSTRAINT" id="TYPE_OF_CONSTRAINT">TYPE_OF_CONSTRAINT</a></li>
+                     </ul>
+                  </td>
+                  <td class="r"></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><code class="upper">TYPE_OF_CONSTRAINT</code><code>&nbsp;{Keyword}</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r"><em>Specifies the type of constraint used.</em></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cannot be repeated
+                     and it expects
+                     
+                     precisely one keyword.
+                     </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     Default value:
+                     <code class="upper">NONE</code></td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     List of valid keywords:
+                     
+                     <ul class="square">
+                        <li>
+                           <dl>
+                              <dt><code class="upper">BECKE</code></dt>
+                              <dd><em>Becke constraint. Requires corresponding section.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">HIRSHFELD</code></dt>
+                              <dd><em>Guassian Hirshfeld constraint. Partial implementation: no forces. Requires corresponding section. Not as extensively tested.</em></dd>
+                           </dl>
+                        </li>
+                        <li>
+                           <dl>
+                              <dt><code class="upper">NONE</code></dt>
+                              <dd><em>No constraint (disables section).</em></dd>
+                           </dl>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="l"></td>
+                  <td class="r">
+                     This keyword cites the following reference:
+                     
+                     [<a href="../../../../references.html#reference_182">Becke1988</a>]
+                     </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+      <hr>
+      <table class="default" summary="footer">
+         <tr>
+            <td align="left">
+               Back to the <a href="../../../../index.html">main page</a> of this manual or the <a href="https://www.cp2k.org">CP2K home page</a></td>
+            <td align="right">
+               (Last update:
+               2.9.2019)
+               </td>
+         </tr>
+      </table>
+   </body>
+</html>
